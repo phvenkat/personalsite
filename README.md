@@ -1,6 +1,6 @@
 # phanindragvenkata.com
 
-Personal site for Phanindra G. Venkata — AI-First Product Leader.
+Personal site for Phanindra G. Venkata - AI-First Product Leader.
 
 Vite + React + TypeScript + Tailwind CSS.
 
@@ -27,7 +27,7 @@ builds, and publishes `dist/` to GitHub Pages. Pull requests run the same checks
 without deploying.
 
 The custom domain is configured by `public/CNAME`. It lives in `public/` (not the repo
-root) so that Vite copies it into `dist/` on every build — a root-level CNAME would be
+root) so that Vite copies it into `dist/` on every build - a root-level CNAME would be
 dropped from the published output and the domain would break. CI asserts it survives.
 
 ## Assets

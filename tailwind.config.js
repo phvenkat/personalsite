@@ -11,7 +11,7 @@ export default {
           700: '#101b35',
           600: '#162040',
         },
-        // Gemini: Mercury gold — warm, luminous, intellectual
+        // Gemini: Mercury gold - warm, luminous, intellectual
         mercury: {
           200: '#f5e8c0',
           300: '#f0d98a',
@@ -19,7 +19,7 @@ export default {
           500: '#d4a017',
           600: '#b8870d',
         },
-        // Gemini: silver air — cool, quick, dual
+        // Gemini: silver air - cool, quick, dual
         silver: {
           200: '#e8edf5',
           300: '#c8d0e0',
@@ -27,7 +27,7 @@ export default {
           500: '#718096',
           600: '#4a5568',
         },
-        // Capricorn: sage earth — grounded, structured, ancient
+        // Capricorn: sage earth - grounded, structured, ancient
         sage: {
           400: '#7a8c6e',
           500: '#5a6b50',

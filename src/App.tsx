@@ -112,7 +112,7 @@ function Navbar() {
 function Hero() {
   return (
     <section id="about" className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Gemini dual ambient — two light poles */}
+      {/* Gemini dual ambient - two light poles */}
       <div className="absolute inset-0 hero-glow pointer-events-none" />
       {/* Capricorn grid */}
       <div className="absolute inset-0 cap-grid opacity-100 pointer-events-none" />
@@ -199,10 +199,10 @@ function Hero() {
           {/* Right: profile photo */}
           <div className="flex justify-center lg:justify-end">
             <div className="relative" style={{ width: 400, maxWidth: '100%' }}>
-              {/* Outer glow ring — Gemini dual-tone */}
+              {/* Outer glow ring - Gemini dual-tone */}
               <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-mercury-500/20 via-transparent to-sage-600/12 blur-2xl pointer-events-none" />
 
-              {/* Decorative corner accents — Capricorn structure */}
+              {/* Decorative corner accents - Capricorn structure */}
               <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-mercury-500/50 rounded-tl-xl pointer-events-none" />
               <div className="absolute -top-2 -right-2 w-8 h-8 border-t-2 border-r-2 border-mercury-500/30 rounded-tr-xl pointer-events-none" />
               <div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-2 border-l-2 border-sage-500/35 rounded-bl-xl pointer-events-none" />
@@ -219,7 +219,7 @@ function Hero() {
                   className="w-full object-cover object-center block"
                   style={{ aspectRatio: '3/4', minHeight: 420 }}
                 />
-                {/* Subtle gradient overlay — name at bottom */}
+                {/* Subtle gradient overlay - name at bottom */}
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-obsidian-950/95 via-obsidian-950/40 to-transparent px-6 py-6">
                   <div className="font-display font-bold text-xl text-silver-100 tracking-wide">Phanindra G. Venkata</div>
                   <div className="text-mercury-400 text-xs font-medium tracking-widest uppercase mt-1">
@@ -249,7 +249,7 @@ const FOCUS_AREAS = [
   { icon: Layers, title: 'Platform & Ecosystem Strategy', desc: 'Designing reusable platforms that reduce marginal cost and accelerate ecosystem growth.' },
   { icon: Database, title: 'Data & Decision Intelligence', desc: 'Turning raw data into structured decision layers that power autonomous execution.' },
   { icon: Network, title: 'Integration-First Architecture', desc: 'Unified platforms that connect disparate systems into seamless, scalable ecosystems.' },
-  { icon: TrendingUp, title: 'Go-to-Market & Monetization', desc: 'Translating platform investments into revenue—ACV, expansion, and compounding value.' },
+  { icon: TrendingUp, title: 'Go-to-Market & Monetization', desc: 'Translating platform investments into revenue-ACV, expansion, and compounding value.' },
   { icon: Users, title: 'Cross-functional Leadership', desc: 'Aligning engineering, product, and business to execute at enterprise scale.' },
 ];
 
@@ -305,7 +305,7 @@ function CurrentRole() {
                 <span className="text-mercury-400 text-xs font-medium tracking-widest uppercase">Current Role</span>
               </div>
               <h3 className="font-display font-bold text-2xl text-silver-100 mb-1">
-                Business Head — Pharma Technologies
+                Business Head
               </h3>
               <div className="text-mercury-300 font-medium text-sm mb-4">
                 Seosaph Infotech · Bengaluru, India
@@ -496,7 +496,7 @@ function Impact() {
   );
 }
 
-// Logos are served locally (public/) rather than hotlinked from each university —
+// Logos are served locally (public/) rather than hotlinked from each university -
 // third-party URLs can move or block referrers, and these are load-bearing credentials.
 // Intrinsic width/height are the files' real pixel dimensions; they reserve layout space.
 const EDUCATION = [
@@ -557,19 +557,19 @@ function Philosophy() {
               reduces future cost, and creates leverage that grows with every use.
             </p>
 
-            {/* North star quote — Capricorn gravitas + Gemini eloquence */}
+            {/* North star quote - Capricorn gravitas + Gemini eloquence */}
             <div className="border-l-2 pl-6 py-2" style={{ borderColor: '#d4a017' }}>
               <p className="text-silver-100 font-display text-xl italic leading-relaxed">
                 "Build intelligent systems that amplify human potential, create compounding value, and leave a meaningful legacy."
               </p>
-              <p className="text-mercury-400 text-sm mt-3 font-medium">— My North Star</p>
+              <p className="text-mercury-400 text-sm mt-3 font-medium">- My North Star</p>
             </div>
 
             {/* Personal grounding card with profile photo inset */}
             <div className="mt-10 rounded-2xl overflow-hidden border border-sage-600/18 relative" style={{
               background: 'linear-gradient(145deg, rgba(11,19,38,0.90) 0%, rgba(6,12,26,0.97) 100%)',
             }}>
-              {/* Subtle bg image — city backdrop from the profile photo context */}
+              {/* Subtle bg image - city backdrop from the profile photo context */}
               <div className="absolute inset-0 opacity-[0.07]" style={{
                 backgroundImage: `url('/Phani_Photo.jpeg')`,
                 backgroundSize: 'cover',
@@ -595,7 +595,7 @@ function Philosophy() {
                     A builder. A systems thinker. A mentor. A father.
                   </p>
                   <p className="text-silver-400 text-sm mt-2 leading-relaxed">
-                    Grounded in the belief that technology should not just optimize work—
+                    Grounded in the belief that technology should not just optimize work-
                     it should <strong className="text-silver-200">create meaningful impact</strong> and build
                     a legacy worth passing on.
                   </p>
@@ -632,9 +632,9 @@ function Philosophy() {
 
 const MENTORSHIP_SERVICES = [
   { icon: Video, title: 'Mock Interview', desc: 'Realistic PM interview simulation with structured feedback on your answers, frameworks, and delivery.', tag: 'Most Popular' },
-  { icon: MessageSquare, title: '1:1 Mentorship', desc: 'Deep-dive sessions tailored to your career stage—from breaking into PM to reaching senior leadership.', tag: null },
+  { icon: MessageSquare, title: '1:1 Mentorship', desc: 'Deep-dive sessions tailored to your career stage-from breaking into PM to reaching senior leadership.', tag: null },
   { icon: Compass, title: 'Career Guidance', desc: 'Navigate career transitions into product management. From BA, engineer, or program manager to PM.', tag: null },
-  { icon: Award, title: 'PM Interview Prep', desc: 'End-to-end preparation for PM roles at top tech companies—frameworks, case studies, and behaviorals.', tag: null },
+  { icon: Award, title: 'PM Interview Prep', desc: 'End-to-end preparation for PM roles at top tech companies-frameworks, case studies, and behaviorals.', tag: null },
   { icon: FileText, title: 'Resume Review', desc: 'Targeted feedback to make your PM resume land interviews at FAANG and growth-stage companies.', tag: null },
   { icon: CalendarCheck, title: 'Discovery Call', desc: 'A focused 30-minute session to align on your goals and chart the right mentorship path forward.', tag: 'Start Here' },
 ];
@@ -643,7 +643,7 @@ const MENTOR_FOCUS = [
   'Career transitions into product management from BA, PM, or engineering roles',
   'Building competencies in product development and user experience',
   'Generative AI and data analytics for modern PMs',
-  'Growth mindset—embracing challenges in dynamic environments',
+  'Growth mindset-embracing challenges in dynamic environments',
   'Practical roadmap definition and cross-functional execution',
   'Breaking into PM at top-tier tech companies',
 ];
@@ -663,7 +663,7 @@ function Mentorship() {
           </h2>
           <p className="text-silver-400 max-w-2xl mx-auto leading-relaxed">
             With 18+ years building products at Microsoft, Amazon, and Salesforce, I help aspiring and
-            transitioning PMs navigate the path to impactful product careers—with real-world insight, not theory.
+            transitioning PMs navigate the path to impactful product careers-with real-world insight, not theory.
           </p>
           <div className="flex flex-wrap justify-center gap-3 mt-6">
             {[
@@ -729,12 +729,12 @@ function Mentorship() {
               </div>
               <div className="p-6 pt-4">
                 <p className="text-silver-300 text-sm leading-relaxed">
-                  I've had the privilege of building at scale—but I remember what it felt like to not know the path.
+                  I've had the privilege of building at scale-but I remember what it felt like to not know the path.
                   Mentorship is my way of paying it forward: giving people the clarity, frameworks, and confidence
                   I wish I'd had earlier.
                 </p>
                 <p className="text-silver-400 text-sm leading-relaxed mt-3">
-                  My goal isn't to give you answers—it's to help you build the judgment to find them yourself.
+                  My goal isn't to give you answers-it's to help you build the judgment to find them yourself.
                 </p>
               </div>
             </div>
@@ -778,7 +778,7 @@ const VALUE_SEGMENTS = [
     tagline: 'Build real AI, not demo AI',
     items: [
       'AI product strategy (0 → 1)',
-      'Avoid "demo AI"—build real, scalable systems',
+      'Avoid "demo AI"-build real, scalable systems',
       'GTM + monetization clarity',
       'Platform architecture from day one',
     ],
@@ -836,7 +836,7 @@ function Testimonials() {
             Real Feedback, <span className="text-gradient-gold">Real Impact</span>
           </h2>
           <p className="text-silver-400 max-w-lg mx-auto">
-            All reviews are 5/5 — pinned on Topmate. Straight from the people who've sat across from Phanindra.
+            All reviews are 5/5 - pinned on Topmate. Straight from the people who've sat across from Phanindra.
           </p>
           <div className="inline-flex items-center gap-2 mt-5 border border-mercury-500/25 bg-mercury-500/6 text-mercury-300 text-xs px-4 py-2 rounded-full font-medium">
             {[...Array(5)].map((_, i) => (
@@ -935,7 +935,7 @@ function WhereIAddValue() {
             Where I <span className="text-gradient-dual">Add Value</span>
           </h2>
           <p className="text-silver-400 max-w-lg mx-auto">
-            Whether you're scaling an enterprise, building a startup, or evaluating an AI investment—I bring pattern-matched clarity from 18+ years at the frontier.
+            Whether you're scaling an enterprise, building a startup, or evaluating an AI investment-I bring pattern-matched clarity from 18+ years at the frontier.
           </p>
         </div>
 
