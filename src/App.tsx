@@ -465,34 +465,22 @@ function Impact() {
         <div className="section-reveal mt-8 card-dark rounded-2xl p-6 border border-sage-600/15">
           <div className="text-xs text-sage-400 font-medium tracking-widest uppercase mb-6">Academic Foundation</div>
           <div className="grid sm:grid-cols-3 gap-6">
-            {[
-              {
-                logo: 'https://images.ctfassets.net/wkud0epjdpn7/YFW8j7W82EmgJsrUPmxZX/2ac27f555d6453a6016b5b083b55b7f3/main-logo.png?fm=webp',
-                degree: 'MBA',
-                school: 'Indian Institute of Management Calcutta',
-                focus: 'Strategy & Leadership',
-              },
-              {
-                logo: 'https://www.bits-pilani.ac.in/wp-content/uploads/bits-pillani-2-1.webp',
-                degree: 'M.Sc. Business Analytics',
-                school: 'BITS Pilani',
-                focus: 'Analytics & Data Science',
-              },
-              {
-                logo: 'https://jntuh.ac.in/images/jntuhlogo.png',
-                degree: 'B.Tech Computer Science',
-                school: 'JNTU Hyderabad',
-                focus: 'Software & Systems',
-              },
-            ].map((edu, i) => (
+            {EDUCATION.map((edu, i) => (
               <div key={i} className="flex flex-col gap-3">
-                <div className="h-14 flex items-center">
-                  <img
-                    src={edu.logo}
-                    alt={edu.school}
-                    className="max-h-12 max-w-[140px] object-contain"
-                    style={{ filter: 'brightness(0) invert(1) opacity(0.85)' }}
-                  />
+                <div className="h-16 flex items-center">
+                  {/* Light chip: these crests carry colour and fine detail, so they are shown
+                      as-issued rather than flattened to a white silhouette. */}
+                  <div className="inline-flex items-center justify-center rounded-lg bg-white/95 border border-white/15 px-3 py-2">
+                    <img
+                      src={edu.logo}
+                      alt={`${edu.school} logo`}
+                      width={edu.logoW}
+                      height={edu.logoH}
+                      loading="lazy"
+                      decoding="async"
+                      className="max-h-9 w-auto max-w-[130px] object-contain"
+                    />
+                  </div>
                 </div>
                 <div>
                   <div className="text-silver-200 font-semibold text-sm">{edu.degree}</div>
@@ -507,6 +495,36 @@ function Impact() {
     </section>
   );
 }
+
+// Logos are served locally (public/) rather than hotlinked from each university —
+// third-party URLs can move or block referrers, and these are load-bearing credentials.
+// Intrinsic width/height are the files' real pixel dimensions; they reserve layout space.
+const EDUCATION = [
+  {
+    logo: '/main-logo.webp',
+    logoW: 343,
+    logoH: 110,
+    degree: 'MBA',
+    school: 'Indian Institute of Management Calcutta',
+    focus: 'Strategy & Leadership',
+  },
+  {
+    logo: '/bits-pillani-2-1.webp',
+    logoW: 290,
+    logoH: 96,
+    degree: 'M.Sc. Business Analytics',
+    school: 'BITS Pilani',
+    focus: 'Analytics & Data Science',
+  },
+  {
+    logo: '/jntuhlogo.png',
+    logoW: 101,
+    logoH: 109,
+    degree: 'B.Tech Computer Science',
+    school: 'JNTU Hyderabad',
+    focus: 'Software & Systems',
+  },
+];
 
 const PHILOSOPHY_POINTS = [
   { icon: Target, title: 'Design for scale from day one', desc: 'Every decision is made with the compound effect in mind.' },
