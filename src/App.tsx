@@ -143,7 +143,7 @@ function Hero() {
 
             <p className="text-silver-400 text-lg leading-relaxed mb-4 max-w-lg">
               AI-first product leader with <strong className="text-silver-200">18+ years</strong> across
-              Microsoft, Amazon, and Salesforce. Now driving <strong className="text-mercury-400">Pharma Technology strategy</strong> through
+              Microsoft, Amazon, and Salesforce. Now <strong className="text-mercury-400">enabling pharma business through technology</strong> with
               Data & AI at Seosaph.
             </p>
             <p className="text-silver-500 text-sm mb-8 max-w-lg">
@@ -311,12 +311,13 @@ function CurrentRole() {
                 Seosaph Infotech · Bengaluru, India
               </div>
               <p className="text-silver-400 text-sm leading-relaxed max-w-xl">
-                Leading product strategy for AI and data-driven pharma technology solutions. Responsible for
-                customer success, organizational growth, and building intelligent systems that transform
-                drug development, clinical operations, and pharma project management.
+                Enabling pharma business through technology. Leading product strategy that puts Data & AI
+                to work across drug development, clinical operations, and pharma project management.
+                Responsible for customer success, organizational growth, and building intelligent systems
+                that move the business forward.
               </p>
               <div className="flex flex-wrap gap-2 mt-5">
-                {['Product Strategy', 'Pharma AI', 'Data-Driven Systems', 'Customer Success', 'Org Growth'].map((tag) => (
+                {['Business Enablement', 'Product Strategy', 'Data & AI', 'Customer Success', 'Org Growth'].map((tag) => (
                   <span key={tag} className="text-xs border border-sage-600/30 text-sage-400 px-3 py-1 rounded-full bg-sage-800/20">
                     {tag}
                   </span>
@@ -325,7 +326,7 @@ function CurrentRole() {
             </div>
             <div className="flex flex-col gap-4">
               {[
-                { icon: FlaskConical, label: 'Pharma Technology', sub: 'AI-driven drug & clinical ops' },
+                { icon: FlaskConical, label: 'Pharma Business Enablement', sub: 'Drug development & clinical ops' },
                 { icon: HeartPulse, label: 'Customer Success', sub: 'Growth & retention focus' },
                 { icon: Database, label: 'Data & AI Strategy', sub: 'Decision intelligence layer' },
               ].map((item, i) => (
