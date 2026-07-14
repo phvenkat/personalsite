@@ -19,13 +19,11 @@ import {
   Globe,
   Menu,
   X,
-  GraduationCap,
   MessageSquare,
   Video,
   FileText,
   Compass,
   Award,
-  BookOpen,
   CalendarCheck,
   FlaskConical,
   HeartPulse,
@@ -216,7 +214,7 @@ function Hero() {
                 style={{ boxShadow: '0 0 32px rgba(212,160,23,0.18), 0 24px 64px rgba(0,0,0,0.6)' }}
               >
                 <img
-                  src="/Gemini_Generated_Image_9a3t2z9a3t2z9a3t.png"
+                  src="/Phani_Photo.jpeg"
                   alt="Phanindra G. Venkata"
                   className="w-full object-cover object-center block"
                   style={{ aspectRatio: '3/4', minHeight: 420 }}
@@ -555,7 +553,7 @@ function Philosophy() {
             }}>
               {/* Subtle bg image — city backdrop from the profile photo context */}
               <div className="absolute inset-0 opacity-[0.07]" style={{
-                backgroundImage: `url('/Gemini_Generated_Image_9a3t2z9a3t2z9a3t.png')`,
+                backgroundImage: `url('/Phani_Photo.jpeg')`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center top',
                 filter: 'blur(4px) saturate(0.3)',
@@ -567,7 +565,7 @@ function Philosophy() {
                     boxShadow: '0 4px 16px rgba(212,160,23,0.15)',
                   }}>
                     <img
-                      src="/Gemini_Generated_Image_9a3t2z9a3t2z9a3t.png"
+                      src="/Phani_Photo.jpeg"
                       alt="Phanindra G. Venkata"
                       className="w-full h-full object-cover object-center"
                     />
@@ -703,7 +701,7 @@ function Mentorship() {
               {/* Photo strip at top */}
               <div className="h-24 overflow-hidden relative">
                 <img
-                  src="/Gemini_Generated_Image_9a3t2z9a3t2z9a3t.png"
+                  src="/Phani_Photo.jpeg"
                   alt="Phanindra G. Venkata"
                   className="w-full object-cover object-top"
                   style={{ marginTop: '-5%', filter: 'saturate(0.7) brightness(0.55)' }}
