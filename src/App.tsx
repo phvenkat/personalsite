@@ -26,7 +26,6 @@ import {
   Award,
   CalendarCheck,
   FlaskConical,
-  HeartPulse,
 } from 'lucide-react';
 
 function useIntersectionObserver() {
@@ -128,7 +127,7 @@ function Hero() {
             {/* Gemini duality tag */}
             <div className="inline-flex items-center gap-2 border border-mercury-500/30 bg-mercury-500/5 text-mercury-400 text-xs font-medium px-3 py-1.5 rounded-full mb-6 tracking-widest uppercase gemini-pulse">
               <span className="w-1.5 h-1.5 rounded-full bg-mercury-400 animate-pulse" />
-              AI-First Product Leader
+              CEO · VirtuNx
             </div>
 
             <h1 className="font-display text-5xl lg:text-6xl font-bold leading-[1.08] mb-6">
@@ -143,8 +142,8 @@ function Hero() {
 
             <p className="text-silver-400 text-lg leading-relaxed mb-4 max-w-lg">
               AI-first product leader with <strong className="text-silver-200">18+ years</strong> across
-              Microsoft, Amazon, and Salesforce. Now <strong className="text-mercury-400">enabling pharma business through technology</strong> with
-              Data & AI at Seosaph.
+              Microsoft, Amazon, and Salesforce. Now <strong className="text-mercury-400">CEO of VirtuNx</strong> and
+              Business Head at Seosaph, enabling pharma business through technology with Data & AI.
             </p>
             <p className="text-silver-500 text-sm mb-8 max-w-lg">
               Strategist · Builder · Transformer · Mentor · Father
@@ -300,24 +299,39 @@ function CurrentRole() {
           <div className="h-0.5 w-full bg-gradient-to-r from-mercury-500/60 via-sage-500/40 to-mercury-500/20" />
           <div className="px-8 py-7 grid md:grid-cols-3 gap-8 items-start">
             <div className="md:col-span-2">
-              <div className="flex items-center gap-3 mb-3">
+              <div className="flex items-center gap-3 mb-4">
                 <div className="w-2 h-2 rounded-full bg-mercury-400 animate-pulse" />
-                <span className="text-mercury-400 text-xs font-medium tracking-widest uppercase">Current Role</span>
+                <span className="text-mercury-400 text-xs font-medium tracking-widest uppercase">Current Roles</span>
               </div>
+
+              {/* Primary role: CEO, VirtuNx */}
               <h3 className="font-display font-bold text-2xl text-silver-100 mb-1">
-                Business Head
+                Chief Executive Officer
               </h3>
-              <div className="text-mercury-300 font-medium text-sm mb-4">
-                Seosaph Infotech · Bengaluru, India
+              <div className="text-mercury-300 font-medium text-sm mb-3">
+                VirtuNx · Enterprise AI, Data &amp; Automation
               </div>
               <p className="text-silver-400 text-sm leading-relaxed max-w-xl">
-                Enabling pharma business through technology. Leading product strategy that puts Data & AI
-                to work across drug development, clinical operations, and pharma project management.
-                Responsible for customer success, organizational growth, and building intelligent systems
-                that move the business forward.
+                Leading VirtuNx in building AI, data, and automation products that turn complexity into
+                clear, confident action for regulated, high-stakes industries.
               </p>
+
+              {/* Second role: Business Head, Seosaph */}
+              <div className="mt-5 pt-5 border-t border-mercury-500/10">
+                <h4 className="font-display font-bold text-lg text-silver-100 mb-1">
+                  Business Head
+                </h4>
+                <div className="text-sage-400 font-medium text-sm mb-2">
+                  Seosaph Infotech · Bengaluru, India
+                </div>
+                <p className="text-silver-400 text-sm leading-relaxed max-w-xl">
+                  Enabling pharma business through technology. Product strategy that puts Data &amp; AI to work
+                  across drug development, clinical operations, and pharma project management.
+                </p>
+              </div>
+
               <div className="flex flex-wrap gap-2 mt-5">
-                {['Business Enablement', 'Product Strategy', 'Data & AI', 'Customer Success', 'Org Growth'].map((tag) => (
+                {['CEO', 'Enterprise AI', 'Pharma Business Enablement', 'Product Strategy', 'Data & AI'].map((tag) => (
                   <span key={tag} className="text-xs border border-sage-600/30 text-sage-400 px-3 py-1 rounded-full bg-sage-800/20">
                     {tag}
                   </span>
@@ -326,8 +340,8 @@ function CurrentRole() {
             </div>
             <div className="flex flex-col gap-4">
               {[
-                { icon: FlaskConical, label: 'Pharma Business Enablement', sub: 'Drug development & clinical ops' },
-                { icon: HeartPulse, label: 'Customer Success', sub: 'Growth & retention focus' },
+                { icon: Building2, label: 'VirtuNx', sub: 'Enterprise AI & automation products' },
+                { icon: FlaskConical, label: 'Pharma Enablement', sub: 'Drug development & clinical ops' },
                 { icon: Database, label: 'Data & AI Strategy', sub: 'Decision intelligence layer' },
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-3">
@@ -340,14 +354,24 @@ function CurrentRole() {
                   </div>
                 </div>
               ))}
-              <a
-                href="https://seosaph.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-xs text-mercury-400 hover:text-mercury-300 border border-mercury-500/20 hover:border-mercury-500/35 px-4 py-2 rounded-full transition-all mt-1 w-fit"
-              >
-                Visit Seosaph <ArrowRight size={12} />
-              </a>
+              <div className="flex flex-col gap-2 mt-1">
+                <a
+                  href="https://virtunx.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-xs text-mercury-400 hover:text-mercury-300 border border-mercury-500/20 hover:border-mercury-500/35 px-4 py-2 rounded-full transition-all w-fit"
+                >
+                  Visit VirtuNx <ArrowRight size={12} />
+                </a>
+                <a
+                  href="https://seosaph.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-xs text-sage-400 hover:text-sage-300 border border-sage-600/25 hover:border-sage-500/40 px-4 py-2 rounded-full transition-all w-fit"
+                >
+                  Visit Seosaph <ArrowRight size={12} />
+                </a>
+              </div>
             </div>
           </div>
         </div>
