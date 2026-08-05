@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import {
   ArrowRight,
+  Atom,
+  KanbanSquare,
   Brain,
   Layers,
   Database,
@@ -45,6 +47,7 @@ function useIntersectionObserver() {
 
 const NAV_LINKS = [
   { label: 'About', href: '#about' },
+  { label: 'VirtuNx', href: '#virtunx' },
   { label: 'Impact', href: '#impact' },
   { label: 'Philosophy', href: '#philosophy' },
   { label: 'Mentorship', href: '#mentorship' },
@@ -325,13 +328,13 @@ function CurrentRole() {
                   Seosaph Infotech · Bengaluru, India
                 </div>
                 <p className="text-silver-400 text-sm leading-relaxed max-w-xl">
-                  Enabling pharma business through technology. Product strategy that puts Data &amp; AI to work
-                  across drug development, clinical operations, and pharma project management.
+                  Driving customers by aligning their needs with the latest technology to solve real business
+                  problems, and driving organizational development and growth.
                 </p>
               </div>
 
               <div className="flex flex-wrap gap-2 mt-5">
-                {['CEO', 'Enterprise AI', 'Pharma Business Enablement', 'Product Strategy', 'Data & AI'].map((tag) => (
+                {['CEO', 'Enterprise AI', 'Customer Success', 'Product Strategy', 'Org Development'].map((tag) => (
                   <span key={tag} className="text-xs border border-sage-600/30 text-sage-400 px-3 py-1 rounded-full bg-sage-800/20">
                     {tag}
                   </span>
@@ -341,8 +344,8 @@ function CurrentRole() {
             <div className="flex flex-col gap-4">
               {[
                 { icon: Building2, label: 'VirtuNx', sub: 'Enterprise AI & automation products' },
-                { icon: FlaskConical, label: 'Pharma Enablement', sub: 'Drug development & clinical ops' },
-                { icon: Database, label: 'Data & AI Strategy', sub: 'Decision intelligence layer' },
+                { icon: Users, label: 'Customer Alignment', sub: 'Needs matched to technology' },
+                { icon: TrendingUp, label: 'Org Development', sub: 'Growth & capability building' },
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <div className="w-8 h-8 rounded-lg bg-mercury-500/8 border border-mercury-500/15 flex items-center justify-center shrink-0">
@@ -374,6 +377,95 @@ function CurrentRole() {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const VIRTUNX_PRODUCTS = [
+  {
+    icon: FlaskConical,
+    name: 'PortiVix',
+    tagline: 'Pharma Portfolio & Project Management',
+    desc: 'Plan, prioritise, and track drug pipelines end to end.',
+    href: 'https://virtunx.com/products/pharma-ppm',
+  },
+  {
+    icon: Atom,
+    name: 'Morviac',
+    tagline: 'Molecule Intelligence Platform',
+    desc: 'Public and internal research aggregated into sourced, explainable molecule intelligence.',
+    href: 'https://virtunx.com/products/molecule-intelligence',
+  },
+  {
+    icon: KanbanSquare,
+    name: 'OplanIQ',
+    tagline: 'Portfolio & Project Management for Every Business',
+    desc: 'Brings portfolio and project management to non-software teams.',
+    href: 'https://virtunx.com/products/portfolio-project-management',
+  },
+  {
+    icon: Database,
+    name: 'ORVIAC',
+    tagline: 'Self-Serve Data Intelligence Platform',
+    desc: 'No-code data intelligence: from raw data to your first insight, fast.',
+    href: 'https://virtunx.com/products/data-intelligence',
+  },
+];
+
+function VirtuNxProducts() {
+  return (
+    <section id="virtunx" className="py-24 relative">
+      <div className="absolute inset-0 pointer-events-none" style={{
+        backgroundImage: `radial-gradient(ellipse 60% 45% at 30% 40%, rgba(212,160,23,0.05) 0%, transparent 60%),
+          radial-gradient(ellipse 50% 40% at 80% 70%, rgba(90,107,80,0.04) 0%, transparent 55%)`,
+      }} />
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="section-reveal text-center mb-16">
+          <div className="text-mercury-400 text-xs font-medium tracking-widest uppercase mb-3">VirtuNx · Product Suite</div>
+          <h2 className="font-display text-4xl font-bold text-silver-100 mb-4">
+            What We're <span className="text-gradient-dual">Building</span>
+          </h2>
+          <p className="text-silver-400 max-w-2xl mx-auto leading-relaxed">
+            Enterprise AI, data, and automation products for regulated, high-stakes industries. We don't
+            build software to sell; we build products that help people make better decisions.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-5">
+          {VIRTUNX_PRODUCTS.map((p) => (
+            <a
+              key={p.name}
+              href={p.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="section-reveal card-dark rounded-2xl p-6 hover:border-mercury-500/30 transition-all duration-300 group flex items-start gap-4"
+            >
+              <div className="w-11 h-11 rounded-xl bg-mercury-500/8 border border-mercury-500/18 flex items-center justify-center shrink-0 group-hover:bg-mercury-500/14 transition-colors">
+                <p.icon size={20} className="text-mercury-400" />
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-1">
+                  <h3 className="font-display font-bold text-lg text-silver-100">{p.name}</h3>
+                  <ArrowRight size={14} className="text-mercury-400 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                </div>
+                <div className="text-mercury-300 text-xs font-medium mb-2">{p.tagline}</div>
+                <p className="text-silver-500 text-sm leading-relaxed">{p.desc}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <div className="section-reveal mt-8 text-center">
+          <a
+            href="https://virtunx.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm text-mercury-400 hover:text-mercury-300 border border-mercury-500/22 hover:border-mercury-500/35 px-5 py-2.5 rounded-full transition-all"
+          >
+            Explore all of VirtuNx <ArrowRight size={15} />
+          </a>
         </div>
       </div>
     </section>
@@ -1097,6 +1189,7 @@ export default function App() {
       <Navbar />
       <Hero />
       <CurrentRole />
+      <VirtuNxProducts />
       <WhatIDo />
       <Impact />
       <Philosophy />
