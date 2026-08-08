@@ -17,6 +17,17 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
+    <!-- Apply a saved theme before first paint to avoid a flash for returning
+         visitors who overrode their OS preference. -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('pvg-theme');
+          if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script>
+
     <!-- Google Fonts: warm up the connection before the CSS @import requests them -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

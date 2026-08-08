@@ -243,7 +243,7 @@ function Strip() {
     <div className="border-y border-line">
       <div className="max-w-page mx-auto px-6 sm:px-8 py-8 flex items-center justify-between gap-10 flex-wrap">
         <div className="font-mono text-[12px] tracking-wider uppercase text-muted max-w-[26ch] leading-relaxed">
-          Eighteen years in software. From engineer, to Microsoft, Amazon, and Salesforce, to building his own.
+          Eighteen years in software. From engineer, to Microsoft, Amazon, and Salesforce, to building my own.
         </div>
         <div className="flex items-center gap-8 flex-wrap font-serif text-[21px]">
           <span className="text-ink/85">Microsoft</span>
@@ -261,9 +261,9 @@ function PointOfView() {
     <section id="pov" className="max-w-page mx-auto px-6 sm:px-8 py-20 sm:py-28">
       <div className="reveal">
         <Eyebrow>A point of view</Eyebrow>
-        <p className="font-serif text-[clamp(22px,3.2vw,34px)] leading-[1.4] tracking-tight max-w-[24ch] text-ink">
+        <h2 className="font-serif font-semibold text-[clamp(22px,3.2vw,34px)] leading-[1.4] tracking-tight max-w-[24ch] text-ink">
           Every enterprise is drowning in tools and starving for clarity.
-        </p>
+        </h2>
         <p className="text-[18px] leading-[1.7] text-muted max-w-[58ch] mt-9">
           More dashboards, more data, more features. And still, the person who has to decide is left guessing.
           I have spent my career on the other side of that problem: not shipping more, but making the decision obvious.
@@ -302,7 +302,7 @@ function Path() {
                 <div className="mb-4 space-y-1">
                   {s.roles.map((r) => (
                     <div key={r.org} className="font-mono text-[12px] tracking-wider uppercase text-muted">
-                      {r.title}, {r.org} <span className="text-muted/70">&middot; {r.dates}</span>
+                      {r.title}, {r.org} <span className="text-muted">&middot; {r.dates}</span>
                     </div>
                   ))}
                 </div>
@@ -325,9 +325,9 @@ function Philosophy() {
       <div className="max-w-page mx-auto px-6 sm:px-8 py-20 sm:py-28">
         <div className="reveal">
           <Eyebrow>Operating philosophy</Eyebrow>
-          <div className="font-serif font-semibold text-[clamp(40px,7vw,84px)] leading-none tracking-tight mt-2 mb-6">
+          <h2 className="font-serif font-semibold text-[clamp(40px,7vw,84px)] leading-none tracking-tight mt-2 mb-6">
             Clarity <span className="italic text-brass">Compounds</span>.
-          </div>
+          </h2>
           <p className="text-[clamp(18px,2.3vw,22px)] text-muted max-w-[54ch] leading-[1.6] mb-16">
             Clarity, like capital, compounds. Every decision made cleanly and every system built simply lowers the
             cost of the next one. <strong className="text-ink font-semibold">Complexity is the tax you pay for

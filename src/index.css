@@ -46,6 +46,13 @@
     font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   }
   ::selection { background: rgb(var(--brass) / 0.22); }
+
+  /* On-brand keyboard focus ring (only for keyboard nav, not mouse clicks) */
+  :focus-visible {
+    outline: 2px solid rgb(var(--brass));
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
