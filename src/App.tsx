@@ -13,7 +13,18 @@ const NAV = [
   { label: 'VirtuNx', href: '#virtunx' },
 ];
 
-const PATH = [
+type Stage = {
+  n: string;
+  company: string;
+  dates: string;
+  role?: string;
+  roles?: { title: string; org: string; dates: string }[];
+  lesson: string;
+  body: string;
+  current?: boolean;
+};
+
+const PATH: Stage[] = [
   {
     n: '01',
     company: 'Microsoft',
@@ -40,11 +51,14 @@ const PATH = [
   },
   {
     n: '04',
-    company: 'VirtuNx',
-    role: 'Chief Executive Officer',
+    company: 'VirtuNx & Seosaph',
     dates: '2026–Present',
+    roles: [
+      { title: 'Chief Executive Officer', org: 'VirtuNx', dates: 'Aug 2026–Present' },
+      { title: 'Business Head', org: 'Seosaph', dates: 'Apr 2026–Present' },
+    ],
     lesson: 'Ownership changes what you are willing to build.',
-    body: 'Now putting the whole thesis to work as CEO. Building enterprise AI, data, and automation products end to end for regulated, high-stakes industries, alongside sister company Seosaph. Everything learned about how great software gets made, aimed at one outcome: turning complexity into clear, confident action.',
+    body: 'The culmination of the path, across one family of companies. At VirtuNx, building enterprise AI, data, and automation products for regulated, high-stakes industries. At Seosaph, driving customers and the organizational growth that carries it. Everything learned about how great software gets made, aimed at one outcome: turning complexity into clear, confident action.',
     current: true,
   },
 ];
@@ -284,7 +298,17 @@ function Path() {
             </div>
             <div>
               <h3 className={`font-serif text-[26px] font-semibold mb-1 ${s.current ? 'text-brass' : 'text-ink'}`}>{s.company}</h3>
-              <div className="font-mono text-[12px] tracking-wider uppercase text-muted mb-4">{s.role} <span className="sm:hidden">&middot; {s.dates}</span></div>
+              {s.roles ? (
+                <div className="mb-4 space-y-1">
+                  {s.roles.map((r) => (
+                    <div key={r.org} className="font-mono text-[12px] tracking-wider uppercase text-muted">
+                      {r.title}, {r.org} <span className="text-muted/70">&middot; {r.dates}</span>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="font-mono text-[12px] tracking-wider uppercase text-muted mb-4">{s.role} <span className="sm:hidden">&middot; {s.dates}</span></div>
+              )}
               <p className="font-serif italic text-[clamp(19px,2.4vw,24px)] text-ink leading-[1.35] mb-3.5">{s.lesson}</p>
               <p className="text-muted leading-[1.65] max-w-[60ch]">{s.body}</p>
             </div>
