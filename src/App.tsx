@@ -1,109 +1,179 @@
-import { useEffect, useState } from 'react';
-import {
-  ArrowRight,
-  Atom,
-  KanbanSquare,
-  Brain,
-  Layers,
-  Database,
-  Network,
-  TrendingUp,
-  Target,
-  Users,
-  Zap,
-  ChevronDown,
-  Linkedin,
-  Mail,
-  CheckCircle2,
-  Star,
-  Building2,
-  Lightbulb,
-  Globe,
-  Menu,
-  X,
-  MessageSquare,
-  Video,
-  FileText,
-  Compass,
-  Award,
-  CalendarCheck,
-  FlaskConical,
-} from 'lucide-react';
+import { useEffect, useState, type ReactNode } from 'react';
+import { ArrowRight, ArrowUpRight, Sun, Moon, Menu, X } from 'lucide-react';
 
-function useIntersectionObserver() {
+/* --------------------------------------------------------------------------
+   Phanindra Venkata Gottipati - CEO, VirtuNx
+   Executive identity. Editorial, restrained, typographic. Light + dark.
+   -------------------------------------------------------------------------- */
+
+const NAV = [
+  { label: 'Point of View', href: '#pov' },
+  { label: 'The Path', href: '#path' },
+  { label: 'Philosophy', href: '#philosophy' },
+  { label: 'VirtuNx', href: '#virtunx' },
+];
+
+const PATH = [
+  {
+    n: '01',
+    company: 'Microsoft',
+    role: 'Senior Product Manager',
+    dates: '2013 - 2021',
+    lesson: 'Scale is a discipline, not an accident.',
+    body: 'Built petabyte-scale data platforms and cut partner onboarding from six weeks to eight hours. The lesson that stayed: at enterprise scale, the constraint is never the technology. It is the clarity of the interface between systems and the people who depend on them.',
+  },
+  {
+    n: '02',
+    company: 'Amazon',
+    role: 'Principal Product Manager',
+    dates: '2021 - 2023',
+    lesson: 'Customers do not want features. They want a decision made easier.',
+    body: 'Scaled search and discovery past 350 million monthly queries and built the ecosystem strategy around them. Customer obsession stopped being a slogan and became a method: start from the choice the customer is trying to make, and work backward to the product.',
+  },
+  {
+    n: '03',
+    company: 'Salesforce',
+    role: 'Senior Director, Product Management',
+    dates: '2023 - 2025',
+    lesson: 'Leverage is the whole game.',
+    body: 'Built an AI application-development platform with 250+ agentic actions, compressed workflow creation from weeks to hours, and contributed to a $20M+ pipeline. Platforms compound: the right foundation makes every future product cheaper to build and every future decision easier to make.',
+  },
+  {
+    n: '04',
+    company: 'VirtuNx',
+    role: 'Chief Executive Officer',
+    dates: '2026 - Present',
+    lesson: 'Ownership changes what you are willing to build.',
+    body: 'Now putting the whole thesis to work as CEO - building enterprise AI, data, and automation products end to end for regulated, high-stakes industries, alongside sister company Seosaph. Everything learned about how great software gets made, aimed at one outcome: turning complexity into clear, confident action.',
+    current: true,
+  },
+];
+
+const PILLARS = [
+  { n: '01', title: 'Start from the decision', body: 'Build backward from the choice someone has to make - not forward from the technology you happen to have.' },
+  { n: '02', title: 'Simplicity is earned', body: 'Anyone can add. The work is in what you remove. Simple is the finished state, never the starting one.' },
+  { n: '03', title: 'Build what compounds', body: 'Favor the system over the feature. The right platform makes every decision that follows it cheaper.' },
+  { n: '04', title: 'Own the outcome', body: 'Judge the work by the decisions it improved, not the output it produced. Ownership ends at the result.' },
+  { n: '05', title: 'Intelligence serves the outcome', body: 'AI, data, and product are means. The end is a better decision, made with confidence, by a human accountable for it. Technology that adds complexity has failed, however advanced.' },
+];
+
+const PRINCIPLES = [
+  'Start from the decision the customer is trying to make, then work backward to the product.',
+  'Complexity is a cost. Account for it like one.',
+  'The best feature is often the one you remove.',
+  'Build the platform, not the one-off. Leverage is what compounds.',
+  'Numbers earn trust; specificity earns belief.',
+  'Ship the decision, not the dashboard.',
+  'Own the outcome, not just the output.',
+  'Make the model explain itself. Unaccountable intelligence is a liability.',
+  'Hire people who want the responsibility, then give it to them fully.',
+  'Play for the decade. Most advantages are only visible in hindsight.',
+];
+
+const PRODUCTS = [
+  { name: 'PortiVix', tag: 'Pharma Portfolio & Project Management', desc: 'Plan, prioritise, and track drug pipelines end to end.', href: 'https://virtunx.com/products/pharma-ppm' },
+  { name: 'Morviac', tag: 'Molecule Intelligence Platform', desc: 'Public and internal research, aggregated into sourced, explainable intelligence.', href: 'https://virtunx.com/products/molecule-intelligence' },
+  { name: 'OplanIQ', tag: 'Portfolio & Project Management', desc: 'Brings disciplined portfolio and project management to non-software teams.', href: 'https://virtunx.com/products/portfolio-project-management' },
+  { name: 'ORVIAC', tag: 'Self-Serve Data Intelligence', desc: 'No-code data intelligence: from raw data to your first insight, fast.', href: 'https://virtunx.com/products/data-intelligence' },
+];
+
+const WRITING = [
+  { title: 'Why enterprises have more data and less clarity than ever', cat: 'Decision Intelligence' },
+  { title: 'The product-led organization, past the buzzword', cat: 'Product Strategy' },
+  { title: 'AI you can be accountable for: sourced, explainable, owned', cat: 'Enterprise AI' },
+];
+
+type Theme = 'light' | 'dark';
+
+function useReveal() {
   useEffect(() => {
-    const observer = new IntersectionObserver(
+    const io = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add('visible');
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.12 }
     );
-    document.querySelectorAll('.section-reveal').forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+    return () => io.disconnect();
   }, []);
 }
 
-const NAV_LINKS = [
-  { label: 'About', href: '#about' },
-  { label: 'VirtuNx', href: '#virtunx' },
-  { label: 'Impact', href: '#impact' },
-  { label: 'Philosophy', href: '#philosophy' },
-  { label: 'Mentorship', href: '#mentorship' },
-  { label: 'Reviews', href: '#testimonials' },
-  { label: 'Connect', href: '#connect' },
-];
+function Eyebrow({ children }: { children: ReactNode }) {
+  return (
+    <p className="eyebrow-rule font-mono text-[12px] tracking-eyebrow uppercase text-brass mb-5 flex items-center">
+      {children}
+    </p>
+  );
+}
 
-function Navbar() {
+function Navbar({ theme, onToggle }: { theme: Theme; onToggle: () => void }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 40);
-    window.addEventListener('scroll', handler);
-    return () => window.removeEventListener('scroll', handler);
+    const h = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', h, { passive: true });
+    return () => window.removeEventListener('scroll', h);
   }, []);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled ? 'bg-obsidian-950/96 backdrop-blur-md border-b border-mercury-500/10 py-3' : 'py-5'
-    }`}>
-      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-        <span className="font-display font-semibold text-lg tracking-wide text-gradient-gold">PGV</span>
+    <nav
+      className={`sticky top-0 z-50 backdrop-blur-md transition-colors duration-300 border-b ${
+        scrolled ? 'border-line bg-paper/85' : 'border-transparent bg-paper/70'
+      }`}
+    >
+      <div className="max-w-page mx-auto px-6 sm:px-8 py-4 flex items-center justify-between">
+        <a href="#top" className="font-serif text-[18px] font-semibold tracking-tight flex items-center gap-2.5 no-underline text-ink">
+          <span className="w-[7px] h-[7px] rounded-full bg-brass inline-block" />
+          Phanindra Venkata Gottipati
+        </a>
+
         <div className="hidden md:flex items-center gap-8">
-          {NAV_LINKS.map((l) => (
-            <a key={l.href} href={l.href} className="nav-link text-sm text-silver-400 hover:text-silver-200 transition-colors">
+          {NAV.map((l) => (
+            <a key={l.href} href={l.href} className="link-underline text-[14px] text-muted hover:text-ink transition-colors">
               {l.label}
             </a>
           ))}
-          <a
-            href="https://topmate.io/phanindra_venkata"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-sm bg-gradient-to-r from-mercury-500 to-mercury-400 text-obsidian-950 font-semibold px-4 py-1.5 rounded-full hover:opacity-90 transition-opacity"
+          <button
+            onClick={onToggle}
+            aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+            className="text-muted hover:text-brass transition-colors"
           >
-            Book a Session
+            {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+          </button>
+          <a href="#contact" className="text-[14px] text-ink border border-line hover:border-brass hover:text-brass px-4 py-2 rounded-[2px] transition-colors">
+            Connect
           </a>
         </div>
-        <button className="md:hidden text-silver-400" onClick={() => setOpen(!open)}>
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
+
+        <div className="md:hidden flex items-center gap-4">
+          <button
+            onClick={onToggle}
+            aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+            className="text-muted"
+          >
+            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+          <button onClick={() => setOpen(!open)} aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} className="text-ink">
+            {open ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </div>
+
       {open && (
-        <div className="md:hidden bg-obsidian-900/98 border-t border-mercury-500/10 px-6 py-4 flex flex-col gap-4">
-          {NAV_LINKS.map((l) => (
-            <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="text-silver-400 hover:text-silver-200 text-sm transition-colors">
+        <div className="md:hidden border-t border-line bg-paper px-6 py-4 flex flex-col gap-4">
+          {NAV.map((l) => (
+            <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="text-[15px] text-muted hover:text-ink transition-colors">
               {l.label}
             </a>
           ))}
-          <a
-            href="https://topmate.io/phanindra_venkata"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm bg-gradient-to-r from-mercury-500 to-mercury-400 text-obsidian-950 font-semibold px-4 py-2 rounded-full text-center"
-          >
-            Book a Session
+          <a href="#contact" onClick={() => setOpen(false)} className="text-[15px] text-ink border border-line px-4 py-2 rounded-[2px] text-center">
+            Connect
           </a>
         </div>
       )}
@@ -113,1033 +183,244 @@ function Navbar() {
 
 function Hero() {
   return (
-    <section id="about" className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Gemini dual ambient - two light poles */}
-      <div className="absolute inset-0 hero-glow pointer-events-none" />
-      {/* Capricorn grid */}
-      <div className="absolute inset-0 cap-grid opacity-100 pointer-events-none" />
-      {/* Saturn ring vignette */}
-      <div className="absolute inset-0 pointer-events-none" style={{
-        background: 'radial-gradient(ellipse 120% 80% at 50% 100%, rgba(90,107,80,0.06) 0%, transparent 60%)',
-      }} />
-
-      <div className="max-w-6xl mx-auto px-6 pt-24 pb-16 w-full">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left */}
-          <div>
-            {/* Gemini duality tag */}
-            <div className="inline-flex items-center gap-2 border border-mercury-500/30 bg-mercury-500/5 text-mercury-400 text-xs font-medium px-3 py-1.5 rounded-full mb-6 tracking-widest uppercase gemini-pulse">
-              <span className="w-1.5 h-1.5 rounded-full bg-mercury-400 animate-pulse" />
-              CEO · VirtuNx
-            </div>
-
-            <h1 className="font-display text-5xl lg:text-6xl font-bold leading-[1.08] mb-6">
-              <span className="text-silver-200">I don't build</span>
-              <br />
-              <span className="text-gradient-gold">products.</span>
-              <br />
-              <span className="text-silver-200">I build systems</span>
-              <br />
-              <span className="text-gradient-silver">that think.</span>
-            </h1>
-
-            <p className="text-silver-400 text-lg leading-relaxed mb-4 max-w-lg">
-              AI-first product leader with <strong className="text-silver-200">18+ years</strong> across
-              Microsoft, Amazon, and Salesforce. Now <strong className="text-mercury-400">CEO of VirtuNx</strong> and
-              Business Head at Seosaph, enabling pharma business through technology with Data & AI.
-            </p>
-            <p className="text-silver-500 text-sm mb-8 max-w-lg">
-              Strategist · Builder · Transformer · Mentor · Father
-            </p>
-
-            {/* Topmate badges */}
-            <div className="flex flex-wrap gap-2 mb-8">
-              {[
-                { label: 'Top 5% Mentor', cls: 'text-mercury-300 border-mercury-500/30' },
-                { label: 'Community Care', cls: 'text-silver-300 border-silver-500/30' },
-                { label: "People's Choice", cls: 'text-sage-400 border-sage-500/30' },
-              ].map((b) => (
-                <span key={b.label} className={`text-xs border px-3 py-1 rounded-full font-medium ${b.cls}`}>
-                  {b.label}
-                </span>
-              ))}
-            </div>
-
-            <div className="flex flex-wrap gap-3">
-              <a
-                href="https://topmate.io/phanindra_venkata"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-mercury-500 to-mercury-400 text-obsidian-950 font-semibold px-6 py-3 rounded-full hover:opacity-90 transition-opacity text-sm"
-              >
-                Book a Session <ArrowRight size={16} />
-              </a>
-              <a
-                href="#impact"
-                className="inline-flex items-center gap-2 border border-silver-600/20 text-silver-400 hover:text-silver-200 hover:border-silver-500/30 px-6 py-3 rounded-full transition-all text-sm"
-              >
-                View Impact <ChevronDown size={16} />
-              </a>
-            </div>
-
-            {/* Stats */}
-            <div className="flex flex-wrap gap-8 mt-12 pt-8 border-t border-mercury-500/10">
-              {[
-                { value: '18+', label: 'Years Experience' },
-                { value: '350M+', label: 'Users Reached' },
-                { value: '$20M+', label: 'ACV Pipeline' },
-                { value: 'Top 5%', label: 'on Topmate' },
-              ].map((s) => (
-                <div key={s.label}>
-                  <div className="text-2xl font-bold text-gradient-gold font-display">{s.value}</div>
-                  <div className="text-xs text-silver-500 mt-0.5">{s.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Right: profile photo */}
-          <div className="flex justify-center lg:justify-end">
-            <div className="relative" style={{ width: 400, maxWidth: '100%' }}>
-              {/* Outer glow ring - Gemini dual-tone */}
-              <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-mercury-500/20 via-transparent to-sage-600/12 blur-2xl pointer-events-none" />
-
-              {/* Decorative corner accents - Capricorn structure */}
-              <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-mercury-500/50 rounded-tl-xl pointer-events-none" />
-              <div className="absolute -top-2 -right-2 w-8 h-8 border-t-2 border-r-2 border-mercury-500/30 rounded-tr-xl pointer-events-none" />
-              <div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-2 border-l-2 border-sage-500/35 rounded-bl-xl pointer-events-none" />
-              <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-sage-500/25 rounded-br-xl pointer-events-none" />
-
-              {/* Main photo */}
-              <div
-                className="relative rounded-2xl overflow-hidden border border-mercury-500/20"
-                style={{ boxShadow: '0 0 32px rgba(212,160,23,0.18), 0 24px 64px rgba(0,0,0,0.6)' }}
-              >
-                <img
-                  src="/Phani_Photo.jpeg"
-                  alt="Phanindra G. Venkata"
-                  className="w-full object-cover object-center block"
-                  style={{ aspectRatio: '3/4', minHeight: 420 }}
-                />
-                {/* Subtle gradient overlay - name at bottom */}
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-obsidian-950/95 via-obsidian-950/40 to-transparent px-6 py-6">
-                  <div className="font-display font-bold text-xl text-silver-100 tracking-wide">Phanindra G. Venkata</div>
-                  <div className="text-mercury-400 text-xs font-medium tracking-widest uppercase mt-1">
-                    Strategist · Builder · Transformer
-                  </div>
-                </div>
-              </div>
-
-              {/* Floating chip: education */}
-              <div
-                className="absolute -left-5 bottom-24 card-dark rounded-xl px-4 py-3 text-xs border border-sage-600/22"
-                style={{ boxShadow: '0 4px 20px rgba(90,107,80,0.10)' }}
-              >
-                <div className="text-mercury-400 font-semibold">MBA · M.Sc. · B.Tech</div>
-                <div className="text-silver-400 mt-0.5">IIM-C · BITS · JNTUH</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-const FOCUS_AREAS = [
-  { icon: Brain, title: 'Agentic AI & Automation', desc: 'Building autonomous workflows and AI agents that replace manual processes.' },
-  { icon: Layers, title: 'Platform & Ecosystem Strategy', desc: 'Designing reusable platforms that reduce marginal cost and accelerate ecosystem growth.' },
-  { icon: Database, title: 'Data & Decision Intelligence', desc: 'Turning raw data into structured decision layers that power autonomous execution.' },
-  { icon: Network, title: 'Integration-First Architecture', desc: 'Unified platforms that connect disparate systems into seamless, scalable ecosystems.' },
-  { icon: TrendingUp, title: 'Go-to-Market & Monetization', desc: 'Translating platform investments into revenue-ACV, expansion, and compounding value.' },
-  { icon: Users, title: 'Cross-functional Leadership', desc: 'Aligning engineering, product, and business to execute at enterprise scale.' },
-];
-
-function WhatIDo() {
-  return (
-    <section className="py-24 relative">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="section-reveal text-center mb-16">
-          <div className="text-mercury-400 text-xs font-medium tracking-widest uppercase mb-3">Capabilities</div>
-          <h2 className="font-display text-4xl font-bold text-silver-100 mb-4">
-            What I <span className="text-gradient-dual">Build & Drive</span>
-          </h2>
-          <p className="text-silver-400 max-w-xl mx-auto leading-relaxed">
-            I help organizations move from manual workflows to intelligent systems,
-            disconnected tools to unified platforms, and data to autonomous decisions.
+    <header id="top" className="max-w-page mx-auto px-6 sm:px-8 pt-20 sm:pt-28 pb-16 sm:pb-24">
+      <div className="grid lg:grid-cols-[1.35fr_1fr] gap-12 lg:gap-16 items-center">
+        <div>
+          <Eyebrow>CEO, VirtuNx</Eyebrow>
+          <h1 className="font-serif font-semibold text-[clamp(38px,6vw,68px)] leading-[1.04] tracking-tight text-balance mb-7">
+            Technology should make the hard decisions <span className="text-brass">clear</span>.
+          </h1>
+          <p className="text-[clamp(17px,2vw,20px)] text-muted leading-[1.55] max-w-[42ch] mb-9">
+            I&apos;m Phanindra Venkata Gottipati, CEO of <strong className="text-ink font-semibold">VirtuNx</strong>,
+            where we build enterprise AI products that help organizations decide with confidence. Eighteen years in
+            software - from engineer to product leader at Microsoft, Amazon, and Salesforce - taught me the work is
+            not adding capability. It is <strong className="text-ink font-semibold">removing doubt</strong>.
           </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {FOCUS_AREAS.map((area, i) => (
-            <div
-              key={i}
-              className="section-reveal card-dark rounded-2xl p-6 hover:border-mercury-500/25 transition-all duration-300 group"
-              style={{ transitionDelay: `${i * 80}ms` }}
-            >
-              <div className="w-10 h-10 rounded-xl bg-mercury-500/8 border border-mercury-500/18 flex items-center justify-center mb-4 group-hover:bg-mercury-500/14 transition-colors">
-                <area.icon size={20} className="text-mercury-400" />
-              </div>
-              <h3 className="font-semibold text-silver-200 mb-2 text-sm">{area.title}</h3>
-              <p className="text-silver-500 text-sm leading-relaxed">{area.desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// Current role section
-function CurrentRole() {
-  return (
-    <section className="py-10 relative">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="section-reveal rounded-2xl overflow-hidden border border-mercury-500/20" style={{
-          background: 'linear-gradient(135deg, rgba(11,19,38,0.95) 0%, rgba(42,53,37,0.25) 50%, rgba(6,12,26,0.98) 100%)',
-        }}>
-          {/* Capricorn earthy top stripe */}
-          <div className="h-0.5 w-full bg-gradient-to-r from-mercury-500/60 via-sage-500/40 to-mercury-500/20" />
-          <div className="px-8 py-7 grid md:grid-cols-3 gap-8 items-start">
-            <div className="md:col-span-2">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-2 h-2 rounded-full bg-mercury-400 animate-pulse" />
-                <span className="text-mercury-400 text-xs font-medium tracking-widest uppercase">Current Roles</span>
-              </div>
-
-              {/* Primary role: CEO, VirtuNx */}
-              <h3 className="font-display font-bold text-2xl text-silver-100 mb-1">
-                Chief Executive Officer
-              </h3>
-              <div className="text-mercury-300 font-medium text-sm mb-3">
-                VirtuNx · Enterprise AI, Data &amp; Automation
-              </div>
-              <p className="text-silver-400 text-sm leading-relaxed max-w-xl">
-                Leading VirtuNx in building AI, data, and automation products that turn complexity into
-                clear, confident action for regulated, high-stakes industries.
-              </p>
-
-              {/* Second role: Business Head, Seosaph */}
-              <div className="mt-5 pt-5 border-t border-mercury-500/10">
-                <h4 className="font-display font-bold text-lg text-silver-100 mb-1">
-                  Business Head
-                </h4>
-                <div className="text-sage-400 font-medium text-sm mb-2">
-                  Seosaph Infotech · Bengaluru, India
-                </div>
-                <p className="text-silver-400 text-sm leading-relaxed max-w-xl">
-                  Driving customers by aligning their needs with the latest technology to solve real business
-                  problems, and driving organizational development and growth.
-                </p>
-              </div>
-
-              <div className="flex flex-wrap gap-2 mt-5">
-                {['CEO', 'Enterprise AI', 'Customer Success', 'Product Strategy', 'Org Development'].map((tag) => (
-                  <span key={tag} className="text-xs border border-sage-600/30 text-sage-400 px-3 py-1 rounded-full bg-sage-800/20">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="flex flex-col gap-4">
-              {[
-                { icon: Building2, label: 'VirtuNx', sub: 'Enterprise AI & automation products' },
-                { icon: Users, label: 'Customer Alignment', sub: 'Needs matched to technology' },
-                { icon: TrendingUp, label: 'Org Development', sub: 'Growth & capability building' },
-              ].map((item, i) => (
-                <div key={i} className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-mercury-500/8 border border-mercury-500/15 flex items-center justify-center shrink-0">
-                    <item.icon size={15} className="text-mercury-400" />
-                  </div>
-                  <div>
-                    <div className="text-silver-200 text-xs font-semibold">{item.label}</div>
-                    <div className="text-silver-500 text-xs mt-0.5">{item.sub}</div>
-                  </div>
-                </div>
-              ))}
-              <div className="flex flex-col gap-2 mt-1">
-                <a
-                  href="https://virtunx.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-xs text-mercury-400 hover:text-mercury-300 border border-mercury-500/20 hover:border-mercury-500/35 px-4 py-2 rounded-full transition-all w-fit"
-                >
-                  Visit VirtuNx <ArrowRight size={12} />
-                </a>
-                <a
-                  href="https://seosaph.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-xs text-sage-400 hover:text-sage-300 border border-sage-600/25 hover:border-sage-500/40 px-4 py-2 rounded-full transition-all w-fit"
-                >
-                  Visit Seosaph <ArrowRight size={12} />
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-const VIRTUNX_PRODUCTS = [
-  {
-    icon: FlaskConical,
-    name: 'PortiVix',
-    tagline: 'Pharma Portfolio & Project Management',
-    desc: 'Plan, prioritise, and track drug pipelines end to end.',
-    href: 'https://virtunx.com/products/pharma-ppm',
-  },
-  {
-    icon: Atom,
-    name: 'Morviac',
-    tagline: 'Molecule Intelligence Platform',
-    desc: 'Public and internal research aggregated into sourced, explainable molecule intelligence.',
-    href: 'https://virtunx.com/products/molecule-intelligence',
-  },
-  {
-    icon: KanbanSquare,
-    name: 'OplanIQ',
-    tagline: 'Portfolio & Project Management for Every Business',
-    desc: 'Brings portfolio and project management to non-software teams.',
-    href: 'https://virtunx.com/products/portfolio-project-management',
-  },
-  {
-    icon: Database,
-    name: 'ORVIAC',
-    tagline: 'Self-Serve Data Intelligence Platform',
-    desc: 'No-code data intelligence: from raw data to your first insight, fast.',
-    href: 'https://virtunx.com/products/data-intelligence',
-  },
-];
-
-function VirtuNxProducts() {
-  return (
-    <section id="virtunx" className="py-24 relative">
-      <div className="absolute inset-0 pointer-events-none" style={{
-        backgroundImage: `radial-gradient(ellipse 60% 45% at 30% 40%, rgba(212,160,23,0.05) 0%, transparent 60%),
-          radial-gradient(ellipse 50% 40% at 80% 70%, rgba(90,107,80,0.04) 0%, transparent 55%)`,
-      }} />
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="section-reveal text-center mb-16">
-          <div className="text-mercury-400 text-xs font-medium tracking-widest uppercase mb-3">VirtuNx · Product Suite</div>
-          <h2 className="font-display text-4xl font-bold text-silver-100 mb-4">
-            What We're <span className="text-gradient-dual">Building</span>
-          </h2>
-          <p className="text-silver-400 max-w-2xl mx-auto leading-relaxed">
-            Enterprise AI, data, and automation products for regulated, high-stakes industries. We don't
-            build software to sell; we build products that help people make better decisions.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-5">
-          {VIRTUNX_PRODUCTS.map((p) => (
-            <a
-              key={p.name}
-              href={p.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="section-reveal card-dark rounded-2xl p-6 hover:border-mercury-500/30 transition-all duration-300 group flex items-start gap-4"
-            >
-              <div className="w-11 h-11 rounded-xl bg-mercury-500/8 border border-mercury-500/18 flex items-center justify-center shrink-0 group-hover:bg-mercury-500/14 transition-colors">
-                <p.icon size={20} className="text-mercury-400" />
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center gap-2 mb-1">
-                  <h3 className="font-display font-bold text-lg text-silver-100">{p.name}</h3>
-                  <ArrowRight size={14} className="text-mercury-400 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-                </div>
-                <div className="text-mercury-300 text-xs font-medium mb-2">{p.tagline}</div>
-                <p className="text-silver-500 text-sm leading-relaxed">{p.desc}</p>
-              </div>
+          <div className="flex flex-wrap gap-4 items-center">
+            <a href="#virtunx" className="group inline-flex items-center gap-2 bg-ink text-paper hover:bg-brass px-6 py-3 rounded-[2px] text-[15px] transition-colors">
+              What we&apos;re building <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
             </a>
-          ))}
+            <a href="#path" className="inline-flex items-center gap-2 border border-line text-ink hover:border-brass hover:text-brass px-6 py-3 rounded-[2px] text-[15px] transition-colors">
+              The path here
+            </a>
+          </div>
         </div>
 
-        <div className="section-reveal mt-8 text-center">
-          <a
-            href="https://virtunx.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm text-mercury-400 hover:text-mercury-300 border border-mercury-500/22 hover:border-mercury-500/35 px-5 py-2.5 rounded-full transition-all"
-          >
-            Explore all of VirtuNx <ArrowRight size={15} />
-          </a>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-const COMPANIES = [
-  {
-    name: 'Salesforce',
-    role: 'Senior Director of Product Management',
-    color: 'from-blue-900/25 to-obsidian-800/40',
-    border: 'border-blue-700/20',
-    metrics: [
-      { value: '250+', label: 'Agent Actions Built' },
-      { value: '$20M+', label: 'ACV Pipeline' },
-      { value: 'Weeks → Hours', label: 'Workflow Creation' },
-    ],
-    highlights: [
-      'Built AI AppDev platform enabling 250+ agentic workflow actions',
-      'Reduced workflow creation from weeks to near real-time',
-      'Contributed directly to $20M+ ACV pipeline generation',
-      'Led integration ecosystem strategy across MuleSoft & Salesforce',
-    ],
-  },
-  {
-    name: 'Amazon',
-    role: 'Principal Product Manager',
-    color: 'from-amber-900/20 to-obsidian-800/40',
-    border: 'border-amber-700/18',
-    metrics: [
-      { value: '350M+', label: 'Monthly Queries' },
-      { value: '3rd Party', label: 'Ecosystem Growth' },
-      { value: 'Conversion ↑', label: 'Search & Discovery' },
-    ],
-    highlights: [
-      'Scaled search and discovery systems to 350M+ monthly queries',
-      'Improved conversion through data-driven discovery optimization',
-      'Reduced 3rd party developer friction to accelerate app supply',
-      'Built scalable ecosystem strategy for Amazon marketplace',
-    ],
-  },
-  {
-    name: 'Microsoft',
-    role: 'Senior Product Manager',
-    color: 'from-teal-900/20 to-obsidian-800/40',
-    border: 'border-teal-700/18',
-    metrics: [
-      { value: '6wk → 8hr', label: 'Onboarding Reduction' },
-      { value: '2.4PB', label: 'Data Platform Scale' },
-      { value: 'Enterprise', label: 'Grade Integrations' },
-    ],
-    highlights: [
-      'Reduced partner onboarding from 6 weeks to 8 hours',
-      'Built petabyte-scale (2.4PB) data platforms and pipelines',
-      'Delivered enterprise-grade integrations at Microsoft scale',
-      'Led cross-functional teams across engineering and business',
-    ],
-  },
-];
-
-function Impact() {
-  return (
-    <section id="impact" className="py-24 relative">
-      <div className="absolute inset-0 pointer-events-none" style={{
-        backgroundImage: `radial-gradient(ellipse 70% 40% at 50% 50%, rgba(212,160,23,0.04) 0%, transparent 70%)`,
-      }} />
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="section-reveal text-center mb-16">
-          <div className="text-mercury-400 text-xs font-medium tracking-widest uppercase mb-3">Proof of Impact</div>
-          <h2 className="font-display text-4xl font-bold text-silver-100 mb-4">
-            Where I've <span className="text-gradient-gold">Delivered</span>
-          </h2>
-          <p className="text-silver-400 max-w-lg mx-auto">
-            18+ years of building at the intersection of AI, platform strategy, and enterprise scale.
-          </p>
-        </div>
-
-        <div className="space-y-5">
-          {COMPANIES.map((co, i) => (
-            <div
-              key={co.name}
-              className={`section-reveal card-dark rounded-2xl overflow-hidden ${co.border} metric-card`}
-              style={{ transitionDelay: `${i * 100}ms` }}
-            >
-              <div className={`bg-gradient-to-r ${co.color} px-8 py-6 border-b ${co.border}`}>
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                  <div>
-                    <h3 className="font-display font-bold text-2xl text-silver-100">{co.name}</h3>
-                    <p className="text-silver-400 text-sm mt-0.5">{co.role}</p>
-                  </div>
-                  <div className="flex gap-6">
-                    {co.metrics.map((m) => (
-                      <div key={m.label} className="text-center">
-                        <div className="font-bold text-lg text-mercury-300">{m.value}</div>
-                        <div className="text-xs text-silver-500">{m.label}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <div className="px-8 py-6 grid sm:grid-cols-2 gap-3">
-                {co.highlights.map((h, j) => (
-                  <div key={j} className="flex items-start gap-3">
-                    <CheckCircle2 size={15} className="text-mercury-500 mt-0.5 shrink-0" />
-                    <span className="text-silver-400 text-sm leading-relaxed">{h}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Education */}
-        <div className="section-reveal mt-8 card-dark rounded-2xl p-6 border border-sage-600/15">
-          <div className="text-xs text-sage-400 font-medium tracking-widest uppercase mb-6">Academic Foundation</div>
-          <div className="grid sm:grid-cols-3 gap-6">
-            {EDUCATION.map((edu, i) => (
-              <div key={i} className="flex flex-col gap-3">
-                <div className="h-16 flex items-center">
-                  {/* Light chip: these crests carry colour and fine detail, so they are shown
-                      as-issued rather than flattened to a white silhouette. */}
-                  <div className="inline-flex items-center justify-center rounded-lg bg-white/95 border border-white/15 px-3 py-2">
-                    <img
-                      src={edu.logo}
-                      alt={`${edu.school} logo`}
-                      width={edu.logoW}
-                      height={edu.logoH}
-                      loading="lazy"
-                      decoding="async"
-                      className="max-h-9 w-auto max-w-[130px] object-contain"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <div className="text-silver-200 font-semibold text-sm">{edu.degree}</div>
-                  <div className="text-silver-400 text-xs mt-0.5">{edu.school}</div>
-                  <div className="text-silver-600 text-xs mt-0.5">{edu.focus}</div>
-                </div>
-              </div>
-            ))}
+        <div>
+          <img
+            src="/Phani_Photo.jpeg"
+            alt="Phanindra Venkata Gottipati"
+            width={864}
+            height={1184}
+            className="portrait-treat w-full aspect-[4/5] object-cover object-top rounded-[2px] block"
+          />
+          <div className="font-mono text-[11px] tracking-wider uppercase text-muted mt-3.5 pt-3 border-t border-line flex justify-between">
+            <span>Phanindra Venkata Gottipati</span>
+            <span>Hyderabad</span>
           </div>
         </div>
       </div>
+    </header>
+  );
+}
+
+function Strip() {
+  return (
+    <div className="border-y border-line">
+      <div className="max-w-page mx-auto px-6 sm:px-8 py-8 flex items-center justify-between gap-10 flex-wrap">
+        <div className="font-mono text-[12px] tracking-wider uppercase text-muted max-w-[26ch] leading-relaxed">
+          Eighteen years in software. From engineer, to Microsoft, Amazon, and Salesforce, to building his own.
+        </div>
+        <div className="flex items-center gap-8 flex-wrap font-serif text-[21px]">
+          <span className="text-ink/85">Microsoft</span>
+          <span className="text-ink/85">Amazon</span>
+          <span className="text-ink/85">Salesforce</span>
+          <span className="text-brass">VirtuNx</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function PointOfView() {
+  return (
+    <section id="pov" className="max-w-page mx-auto px-6 sm:px-8 py-20 sm:py-28">
+      <div className="reveal">
+        <Eyebrow>A point of view</Eyebrow>
+        <p className="font-serif text-[clamp(22px,3.2vw,34px)] leading-[1.4] tracking-tight max-w-[24ch] text-ink">
+          Every enterprise is drowning in tools and starving for clarity.
+        </p>
+        <p className="text-[18px] leading-[1.7] text-muted max-w-[58ch] mt-9">
+          More dashboards, more data, more features - and still, the person who has to decide is left guessing.
+          I have spent my career on the other side of that problem: not shipping more, but making the decision obvious.
+          <strong className="text-ink font-semibold"> Good systems compound.</strong> Each one built well makes the next
+          decision cheaper, faster, and clearer. That is the whole discipline - and it is what VirtuNx exists to do.
+        </p>
+      </div>
     </section>
   );
 }
 
-// Logos are served locally (public/) rather than hotlinked from each university -
-// third-party URLs can move or block referrers, and these are load-bearing credentials.
-// Intrinsic width/height are the files' real pixel dimensions; they reserve layout space.
-const EDUCATION = [
-  {
-    logo: '/main-logo.webp',
-    logoW: 343,
-    logoH: 110,
-    degree: 'MBA',
-    school: 'Indian Institute of Management Calcutta',
-    focus: 'Strategy & Leadership',
-  },
-  {
-    logo: '/bits-pillani-2-1.webp',
-    logoW: 290,
-    logoH: 96,
-    degree: 'M.Sc. Business Analytics',
-    school: 'BITS Pilani',
-    focus: 'Analytics & Data Science',
-  },
-  {
-    logo: '/jntuhlogo.png',
-    logoW: 101,
-    logoH: 109,
-    degree: 'B.Tech Computer Science',
-    school: 'JNTU Hyderabad',
-    focus: 'Software & Systems',
-  },
-];
+function Path() {
+  return (
+    <section id="path" className="max-w-page mx-auto px-6 sm:px-8 py-20 sm:py-28">
+      <div className="reveal max-w-[62ch] mb-14">
+        <Eyebrow>The path</Eyebrow>
+        <h2 className="font-serif font-semibold text-[clamp(28px,4vw,42px)] leading-[1.12] tracking-tight mb-5">
+          One question, asked in harder rooms.
+        </h2>
+        <p className="text-[clamp(17px,2vw,20px)] text-muted leading-[1.6]">
+          It began in 2005, writing Java and J2EE - learning how software is actually built. Eighteen years on,
+          the question has never changed, only the room: how do you help people make better decisions at scale?
+        </p>
+      </div>
 
-const PHILOSOPHY_POINTS = [
-  { icon: Target, title: 'Design for scale from day one', desc: 'Every decision is made with the compound effect in mind.' },
-  { icon: Lightbulb, title: 'Structure decisions → enable AI', desc: 'Intelligent systems require structured data and decision frameworks.' },
-  { icon: Layers, title: 'Build reusable platforms', desc: 'Reduce marginal cost with every new product built on the platform.' },
-  { icon: Users, title: 'Combine empathy + data rigor', desc: 'Customer insight without data is a guess. Data without empathy is noise.' },
-  { icon: Zap, title: 'Think long-term, act with clarity', desc: 'Visionary roadmaps grounded in actionable, measurable milestones.' },
-  { icon: Star, title: 'Empower teams, build leaders', desc: 'The best systems are built by teams that feel ownership and purpose.' },
-];
+      <div>
+        {PATH.map((s) => (
+          <div key={s.n} className="reveal grid sm:grid-cols-[88px_1fr] gap-4 sm:gap-8 py-10 border-t border-line last:border-b">
+            <div className="sm:pt-1.5">
+              <div className="font-mono text-[13px] text-brass tracking-wider">{s.n}</div>
+              <div className="font-mono text-[11px] text-muted tracking-wider mt-2 hidden sm:block tabular-nums">{s.dates}</div>
+            </div>
+            <div>
+              <h3 className={`font-serif text-[26px] font-semibold mb-1 ${s.current ? 'text-brass' : 'text-ink'}`}>{s.company}</h3>
+              <div className="font-mono text-[12px] tracking-wider uppercase text-muted mb-4">{s.role} <span className="sm:hidden">&middot; {s.dates}</span></div>
+              <p className="font-serif italic text-[clamp(19px,2.4vw,24px)] text-ink leading-[1.35] mb-3.5">{s.lesson}</p>
+              <p className="text-muted leading-[1.65] max-w-[60ch]">{s.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
 
 function Philosophy() {
   return (
-    <section id="philosophy" className="py-24 relative">
-      {/* Capricorn earth ambient */}
-      <div className="absolute inset-0 pointer-events-none" style={{
-        background: 'radial-gradient(ellipse 60% 50% at 0% 50%, rgba(90,107,80,0.05) 0%, transparent 60%)',
-      }} />
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          <div className="section-reveal">
-            <div className="text-mercury-400 text-xs font-medium tracking-widest uppercase mb-3">Thinking</div>
-            <h2 className="font-display text-4xl font-bold text-silver-100 mb-6">
-              How I <span className="text-gradient-gold">Think</span>
-            </h2>
-            <p className="text-silver-400 leading-relaxed mb-6">
-              Most teams build features. I build <strong className="text-silver-200">systems that compound</strong>.
-            </p>
-            <p className="text-silver-400 leading-relaxed mb-8">
-              The difference: a feature solves today's problem. A system anticipates tomorrow's,
-              reduces future cost, and creates leverage that grows with every use.
-            </p>
-
-            {/* North star quote - Capricorn gravitas + Gemini eloquence */}
-            <div className="border-l-2 pl-6 py-2" style={{ borderColor: '#d4a017' }}>
-              <p className="text-silver-100 font-display text-xl italic leading-relaxed">
-                "Build intelligent systems that amplify human potential, create compounding value, and leave a meaningful legacy."
-              </p>
-              <p className="text-mercury-400 text-sm mt-3 font-medium">- My North Star</p>
-            </div>
-
-            {/* Personal grounding card with profile photo inset */}
-            <div className="mt-10 rounded-2xl overflow-hidden border border-sage-600/18 relative" style={{
-              background: 'linear-gradient(145deg, rgba(11,19,38,0.90) 0%, rgba(6,12,26,0.97) 100%)',
-            }}>
-              {/* Subtle bg image - city backdrop from the profile photo context */}
-              <div className="absolute inset-0 opacity-[0.07]" style={{
-                backgroundImage: `url('/Phani_Photo.jpeg')`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center top',
-                filter: 'blur(4px) saturate(0.3)',
-              }} />
-              <div className="relative flex gap-5 p-6">
-                {/* Small profile photo inset */}
-                <div className="shrink-0">
-                  <div className="w-16 h-16 rounded-xl overflow-hidden border border-mercury-500/25" style={{
-                    boxShadow: '0 4px 16px rgba(212,160,23,0.15)',
-                  }}>
-                    <img
-                      src="/Phani_Photo.jpeg"
-                      alt="Phanindra G. Venkata"
-                      className="w-full h-full object-cover object-center"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <div className="text-xs text-sage-400 font-medium tracking-widest uppercase mb-2">Personal Grounding</div>
-                  <p className="text-silver-300 leading-relaxed text-sm">
-                    A builder. A systems thinker. A mentor. A father.
-                  </p>
-                  <p className="text-silver-400 text-sm mt-2 leading-relaxed">
-                    Grounded in the belief that technology should not just optimize work-
-                    it should <strong className="text-silver-200">create meaningful impact</strong> and build
-                    a legacy worth passing on.
-                  </p>
-                  <div className="flex flex-wrap gap-2 mt-3">
-                    {['Family', 'Purpose', 'Legacy', 'Growth'].map((v) => (
-                      <span key={v} className="text-xs border border-mercury-500/25 text-mercury-300 px-3 py-1 rounded-full">
-                        {v}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
+    <section id="philosophy" className="bg-surface border-y border-line">
+      <div className="max-w-page mx-auto px-6 sm:px-8 py-20 sm:py-28">
+        <div className="reveal">
+          <Eyebrow>Operating philosophy</Eyebrow>
+          <div className="font-serif font-semibold text-[clamp(40px,7vw,84px)] leading-none tracking-tight mt-2 mb-6">
+            Clarity <span className="italic text-brass">Compounds</span>.
           </div>
+          <p className="text-[clamp(18px,2.3vw,22px)] text-muted max-w-[54ch] leading-[1.6] mb-16">
+            Clarity, like capital, compounds. Every decision made cleanly and every system built simply lowers the
+            cost of the next one. <strong className="text-ink font-semibold">Complexity is the tax you pay for
+            yesterday&apos;s shortcuts. Clarity is the asset that pays forward.</strong>
+          </p>
+        </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {PHILOSOPHY_POINTS.map((p, i) => (
-              <div
-                key={i}
-                className="section-reveal card-dark rounded-xl p-5 hover:border-mercury-500/22 transition-all group"
-                style={{ transitionDelay: `${i * 60}ms` }}
-              >
-                <p.icon size={18} className="text-mercury-400 mb-3 group-hover:scale-110 transition-transform" />
-                <h4 className="text-silver-200 text-sm font-semibold mb-1">{p.title}</h4>
-                <p className="text-silver-500 text-xs leading-relaxed">{p.desc}</p>
-              </div>
+        {/* Five pillars */}
+        <div className="reveal grid sm:grid-cols-2 gap-px bg-line border border-line mb-20">
+          {PILLARS.map((p, i) => (
+            <div key={p.n} className={`bg-surface p-8 ${i === 4 ? 'sm:col-span-2' : ''}`}>
+              <div className="font-mono text-[12px] text-brass tracking-wider">{p.n}</div>
+              <h3 className="font-serif text-[22px] font-semibold mt-3.5 mb-2.5">{p.title}</h3>
+              <p className="text-muted text-[15.5px] leading-[1.6]">{p.body}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Ten principles */}
+        <div className="reveal">
+          <Eyebrow>The principles</Eyebrow>
+          <ol className="grid sm:grid-cols-2 gap-x-12 gap-y-0 mt-4">
+            {PRINCIPLES.map((p, i) => (
+              <li key={i} className="flex gap-5 py-5 border-t border-line">
+                <span className="font-mono text-[13px] text-brass tabular-nums pt-1">{String(i + 1).padStart(2, '0')}</span>
+                <span className="font-serif text-[19px] leading-[1.4] text-ink">{p}</span>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </div>
     </section>
   );
 }
 
-const MENTORSHIP_SERVICES = [
-  { icon: Video, title: 'Mock Interview', desc: 'Realistic PM interview simulation with structured feedback on your answers, frameworks, and delivery.', tag: 'Most Popular' },
-  { icon: MessageSquare, title: '1:1 Mentorship', desc: 'Deep-dive sessions tailored to your career stage-from breaking into PM to reaching senior leadership.', tag: null },
-  { icon: Compass, title: 'Career Guidance', desc: 'Navigate career transitions into product management. From BA, engineer, or program manager to PM.', tag: null },
-  { icon: Award, title: 'PM Interview Prep', desc: 'End-to-end preparation for PM roles at top tech companies-frameworks, case studies, and behaviorals.', tag: null },
-  { icon: FileText, title: 'Resume Review', desc: 'Targeted feedback to make your PM resume land interviews at FAANG and growth-stage companies.', tag: null },
-  { icon: CalendarCheck, title: 'Discovery Call', desc: 'A focused 30-minute session to align on your goals and chart the right mentorship path forward.', tag: 'Start Here' },
-];
-
-const MENTOR_FOCUS = [
-  'Career transitions into product management from BA, PM, or engineering roles',
-  'Building competencies in product development and user experience',
-  'Generative AI and data analytics for modern PMs',
-  'Growth mindset-embracing challenges in dynamic environments',
-  'Practical roadmap definition and cross-functional execution',
-  'Breaking into PM at top-tier tech companies',
-];
-
-function Mentorship() {
+function VirtuNx() {
   return (
-    <section id="mentorship" className="py-24 relative">
-      <div className="absolute inset-0 pointer-events-none" style={{
-        backgroundImage: `radial-gradient(ellipse 65% 45% at 70% 50%, rgba(212,160,23,0.05) 0%, transparent 55%),
-          radial-gradient(ellipse 50% 40% at 20% 70%, rgba(90,107,80,0.04) 0%, transparent 55%)`,
-      }} />
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="section-reveal text-center mb-16">
-          <div className="text-mercury-400 text-xs font-medium tracking-widest uppercase mb-3">Mentorship & Advisory</div>
-          <h2 className="font-display text-4xl font-bold text-silver-100 mb-4">
-            Learn From Someone <span className="text-gradient-silver">Who's Been There</span>
-          </h2>
-          <p className="text-silver-400 max-w-2xl mx-auto leading-relaxed">
-            With 18+ years building products at Microsoft, Amazon, and Salesforce, I help aspiring and
-            transitioning PMs navigate the path to impactful product careers-with real-world insight, not theory.
+    <section id="virtunx" className="max-w-page mx-auto px-6 sm:px-8 py-20 sm:py-28">
+      <div className="reveal flex justify-between items-end gap-6 flex-wrap mb-12">
+        <div className="max-w-[62ch]">
+          <Eyebrow>The current chapter</Eyebrow>
+          <h2 className="font-serif font-semibold text-[clamp(28px,4vw,42px)] leading-[1.12] tracking-tight mb-5">VirtuNx</h2>
+          <p className="text-[clamp(17px,2vw,20px)] text-muted leading-[1.6]">
+            Enterprise AI, data, and automation products for regulated, high-stakes industries. We do not build
+            software to sell. We build products that help people make better decisions.
           </p>
-          <div className="flex flex-wrap justify-center gap-3 mt-6">
-            {[
-              { label: 'Top 5% Mentor', cls: 'bg-mercury-500/8 border-mercury-500/25 text-mercury-300' },
-              { label: 'Community Care', cls: 'bg-silver-600/8 border-silver-500/25 text-silver-300' },
-              { label: "People's Choice", cls: 'bg-sage-700/10 border-sage-600/25 text-sage-400' },
-            ].map((b) => (
-              <span key={b.label} className={`text-xs border px-4 py-1.5 rounded-full font-medium ${b.cls}`}>
-                {b.label}
-              </span>
-            ))}
-          </div>
         </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
-          {MENTORSHIP_SERVICES.map((svc, i) => (
-            <div
-              key={i}
-              className="section-reveal card-dark rounded-2xl p-6 hover:border-mercury-500/22 transition-all duration-300 group relative"
-              style={{ transitionDelay: `${i * 70}ms` }}
-            >
-              {svc.tag && (
-                <span className="absolute top-4 right-4 text-xs bg-mercury-500/12 border border-mercury-500/28 text-mercury-300 px-2.5 py-0.5 rounded-full">
-                  {svc.tag}
-                </span>
-              )}
-              <div className="w-10 h-10 rounded-xl bg-mercury-500/8 border border-mercury-500/18 flex items-center justify-center mb-4 group-hover:bg-mercury-500/14 transition-colors">
-                <svc.icon size={20} className="text-mercury-400" />
-              </div>
-              <h3 className="font-semibold text-silver-200 mb-2 text-sm">{svc.title}</h3>
-              <p className="text-silver-500 text-sm leading-relaxed">{svc.desc}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-8">
-          <div className="section-reveal card-dark rounded-2xl p-7 border border-sage-600/15">
-            <div className="text-xs text-sage-400 font-medium tracking-widest uppercase mb-5">Mentorship Focus Areas</div>
-            <ul className="space-y-3">
-              {MENTOR_FOCUS.map((item, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <CheckCircle2 size={15} className="text-mercury-500 mt-0.5 shrink-0" />
-                  <span className="text-silver-400 text-sm leading-relaxed">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="section-reveal flex flex-col gap-5">
-            <div className="rounded-2xl overflow-hidden border border-mercury-500/10 flex-1 relative" style={{
-              background: 'linear-gradient(145deg, rgba(11,19,38,0.92) 0%, rgba(6,12,26,0.98) 100%)',
-            }}>
-              {/* Photo strip at top */}
-              <div className="h-24 overflow-hidden relative">
-                <img
-                  src="/Phani_Photo.jpeg"
-                  alt="Phanindra G. Venkata"
-                  className="w-full object-cover object-top"
-                  style={{ marginTop: '-5%', filter: 'saturate(0.7) brightness(0.55)' }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-obsidian-950/40 to-obsidian-950/95" />
-                <div className="absolute bottom-3 left-5 text-xs text-mercury-400 font-medium tracking-widest uppercase">Why I Mentor</div>
-              </div>
-              <div className="p-6 pt-4">
-                <p className="text-silver-300 text-sm leading-relaxed">
-                  I've had the privilege of building at scale-but I remember what it felt like to not know the path.
-                  Mentorship is my way of paying it forward: giving people the clarity, frameworks, and confidence
-                  I wish I'd had earlier.
-                </p>
-                <p className="text-silver-400 text-sm leading-relaxed mt-3">
-                  My goal isn't to give you answers-it's to help you build the judgment to find them yourself.
-                </p>
-              </div>
-            </div>
-
-            <div className="rounded-2xl p-6 border border-mercury-500/22" style={{
-              background: 'linear-gradient(135deg, rgba(212,160,23,0.07) 0%, rgba(90,107,80,0.04) 100%)',
-            }}>
-              <div className="text-silver-200 font-semibold mb-1">Ready to accelerate your PM career?</div>
-              <p className="text-silver-400 text-sm mb-4">Book a session directly on Topmate. Discovery calls start at 30 minutes.</p>
-              <a
-                href="https://topmate.io/phanindra_venkata"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-mercury-500 to-mercury-400 text-obsidian-950 font-semibold px-6 py-2.5 rounded-full hover:opacity-90 transition-opacity text-sm"
-              >
-                Book on Topmate <ArrowRight size={15} />
-              </a>
-            </div>
-          </div>
-        </div>
+        <a href="https://virtunx.com/" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 border border-line text-ink hover:border-brass hover:text-brass px-6 py-3 rounded-[2px] text-[15px] transition-colors whitespace-nowrap">
+          Visit VirtuNx <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+        </a>
       </div>
-    </section>
-  );
-}
 
-const VALUE_SEGMENTS = [
-  {
-    icon: Building2,
-    title: 'Enterprises',
-    tagline: 'Transform workflow to autonomy',
-    items: [
-      'AI transformation strategy (workflow → autonomy)',
-      'Platform unification across business units',
-      'Integration & ecosystem architecture',
-      'Data platform → decision layer roadmap',
-    ],
-  },
-  {
-    icon: Zap,
-    title: 'Startups',
-    tagline: 'Build real AI, not demo AI',
-    items: [
-      'AI product strategy (0 → 1)',
-      'Avoid "demo AI"-build real, scalable systems',
-      'GTM + monetization clarity',
-      'Platform architecture from day one',
-    ],
-  },
-  {
-    icon: Globe,
-    title: 'Investors & Boards',
-    tagline: 'Evaluate and de-risk AI bets',
-    items: [
-      'Evaluate AI product viability and moat',
-      'Identify scalable platform opportunities',
-      'De-risk enterprise AI strategy',
-      'Advisory on product-market alignment',
-    ],
-  },
-];
-
-const TESTIMONIALS = [
-  {
-    name: 'Abhisesh Makkapati',
-    date: '9th May, 2025',
-    rating: 5,
-    text: 'I had a great conversation with Phanindra about product management, and it was incredibly insightful. He helped me explore different paths, broke down complex concepts clearly, and provided clarity on every aspect I was unsure about. His guidance was practical and easy to understand. I highly recommend speaking with him if you\'re having any queries on career guidance, it\'s truly helpful.',
-  },
-  {
-    name: 'Haridhakshini SA',
-    date: '28th Jan, 2025',
-    rating: 5,
-    text: 'I had the privilege of attending a product management guidance session with Phanindra, and it was nothing short of transformative. His deep understanding of the field and practical insights made it easy for me to grasp the nuances of transitioning into a product management role. He patiently broke down complex concepts, shared actionable strategies, and tailored his advice to my unique background. Phanindra\'s guidance gave me the confidence and clarity I needed to take the next steps in my career journey. If you\'re looking for someone who genuinely cares about your growth and has the expertise to back it up, Phanindra is the mentor you need!',
-  },
-  {
-    name: 'Arindam Ghosh',
-    date: '15th Feb, 2025',
-    rating: 5,
-    text: 'Too good...such structure and so well explained..has been amazing to talk and discuss stuff about my resume, interview prep, literally everything',
-  },
-  {
-    name: 'Arindam Ghosh',
-    date: '7th Feb, 2025',
-    rating: 5,
-    text: 'Amazing connect..will connect for future guidance for sure',
-  },
-];
-
-function Testimonials() {
-  return (
-    <section id="testimonials" className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none" style={{
-        backgroundImage: `radial-gradient(ellipse 60% 50% at 50% 50%, rgba(212,160,23,0.04) 0%, transparent 65%)`,
-      }} />
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="section-reveal text-center mb-14">
-          <div className="text-mercury-400 text-xs font-medium tracking-widest uppercase mb-3">What Mentees Say</div>
-          <h2 className="font-display text-4xl font-bold text-silver-100 mb-4">
-            Real Feedback, <span className="text-gradient-gold">Real Impact</span>
-          </h2>
-          <p className="text-silver-400 max-w-lg mx-auto">
-            All reviews are 5/5 - pinned on Topmate. Straight from the people who've sat across from Phanindra.
-          </p>
-          <div className="inline-flex items-center gap-2 mt-5 border border-mercury-500/25 bg-mercury-500/6 text-mercury-300 text-xs px-4 py-2 rounded-full font-medium">
-            {[...Array(5)].map((_, i) => (
-              <svg key={i} width="12" height="12" viewBox="0 0 12 12" fill="#d4a017"><path d="M6 1l1.35 2.73L10.5 4.2l-2.25 2.19.53 3.11L6 7.96l-2.78 1.54.53-3.11L1.5 4.2l3.15-.47L6 1z"/></svg>
-            ))}
-            <span className="ml-1">All reviews 5.0 · Topmate Pinned</span>
-          </div>
-        </div>
-
-        {/* Featured large review */}
-        <div className="section-reveal mb-6">
-          <div className="card-dark rounded-2xl p-8 border border-mercury-500/18 relative overflow-hidden group hover:border-mercury-500/30 transition-all duration-300">
-            <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-mercury-400 to-mercury-600/30 rounded-l-2xl" />
-            <div className="absolute top-6 right-8 opacity-10">
-              <svg width="48" height="36" viewBox="0 0 48 36" fill="#d4a017"><path d="M0 36V22.5C0 14.5 5.5 7.5 16.5 2L19.5 7C14 9.5 11 13 11 16.5h7V36H0zm26 0V22.5C26 14.5 31.5 7.5 42.5 2L45.5 7C40 9.5 37 13 37 16.5h7V36H26z"/></svg>
+      <div className="reveal grid sm:grid-cols-2 gap-px bg-line border border-line">
+        {PRODUCTS.map((p) => (
+          <a key={p.name} href={p.href} target="_blank" rel="noopener noreferrer" className="group bg-paper hover:bg-surface p-8 block transition-colors">
+            <div className="font-serif text-[22px] font-semibold flex items-center gap-2 mb-1.5">
+              {p.name}
+              <ArrowUpRight size={15} className="text-brass opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
             </div>
-            <div className="flex gap-1 mb-5">
-              {[...Array(5)].map((_, i) => (
-                <svg key={i} width="14" height="14" viewBox="0 0 12 12" fill="#d4a017"><path d="M6 1l1.35 2.73L10.5 4.2l-2.25 2.19.53 3.11L6 7.96l-2.78 1.54.53-3.11L1.5 4.2l3.15-.47L6 1z"/></svg>
-              ))}
-            </div>
-            <p className="text-silver-200 text-base leading-relaxed mb-6 max-w-3xl font-display italic">
-              "{TESTIMONIALS[1].text}"
-            </p>
-            <div className="flex items-center gap-4">
-              <div className="w-9 h-9 rounded-full bg-gradient-to-br from-mercury-500/30 to-sage-600/20 border border-mercury-500/25 flex items-center justify-center text-mercury-300 font-bold text-sm">
-                {TESTIMONIALS[1].name.charAt(0)}
-              </div>
-              <div>
-                <div className="text-silver-200 font-semibold text-sm">{TESTIMONIALS[1].name}</div>
-                <div className="text-silver-500 text-xs mt-0.5">{TESTIMONIALS[1].date} · Topmate</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Three-column grid for remaining reviews */}
-        <div className="grid md:grid-cols-3 gap-5">
-          {[TESTIMONIALS[0], TESTIMONIALS[2], TESTIMONIALS[3]].map((t, i) => (
-            <div
-              key={i}
-              className="section-reveal card-dark rounded-2xl p-6 border border-mercury-500/12 hover:border-mercury-500/25 transition-all duration-300 group flex flex-col"
-              style={{ transitionDelay: `${i * 80}ms` }}
-            >
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex gap-1">
-                  {[...Array(5)].map((_, j) => (
-                    <svg key={j} width="11" height="11" viewBox="0 0 12 12" fill="#d4a017"><path d="M6 1l1.35 2.73L10.5 4.2l-2.25 2.19.53 3.11L6 7.96l-2.78 1.54.53-3.11L1.5 4.2l3.15-.47L6 1z"/></svg>
-                  ))}
-                </div>
-                <span className="text-xs border border-mercury-500/22 text-mercury-400 px-2 py-0.5 rounded-full">Pinned</span>
-              </div>
-              <p className="text-silver-300 text-sm leading-relaxed flex-1 italic">
-                "{t.text}"
-              </p>
-              <div className="flex items-center gap-3 mt-5 pt-4 border-t border-white/5">
-                <div className="w-7 h-7 rounded-full bg-gradient-to-br from-mercury-500/25 to-sage-600/15 border border-mercury-500/20 flex items-center justify-center text-mercury-300 font-bold text-xs">
-                  {t.name.charAt(0)}
-                </div>
-                <div>
-                  <div className="text-silver-200 font-semibold text-xs">{t.name}</div>
-                  <div className="text-silver-500 text-xs mt-0.5">{t.date}</div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* CTA strip */}
-        <div className="section-reveal mt-10 text-center">
-          <a
-            href="https://topmate.io/phanindra_venkata"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm text-mercury-400 hover:text-mercury-300 border border-mercury-500/22 hover:border-mercury-500/35 px-5 py-2.5 rounded-full transition-all"
-          >
-            See all reviews on Topmate
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <div className="font-mono text-[11px] tracking-wider uppercase text-brass mb-3">{p.tag}</div>
+            <p className="text-muted text-[15px] leading-[1.6]">{p.desc}</p>
           </a>
-        </div>
+        ))}
+      </div>
+      <p className="reveal font-mono text-[11px] tracking-wider uppercase text-muted mt-6">
+        VirtuNx and Seosaph are part of the same family of companies.
+      </p>
+    </section>
+  );
+}
+
+function Writing() {
+  return (
+    <section id="writing" className="max-w-page mx-auto px-6 sm:px-8 py-20 sm:py-28">
+      <div className="reveal max-w-[62ch] mb-12">
+        <Eyebrow>Writing</Eyebrow>
+        <h2 className="font-serif font-semibold text-[clamp(28px,4vw,42px)] leading-[1.12] tracking-tight mb-5">Notes on building.</h2>
+        <p className="text-[clamp(17px,2vw,20px)] text-muted leading-[1.6]">
+          Essays on enterprise AI, product-led organizations, and decision intelligence - written for operators, not
+          the hype cycle. The first pieces publish this quarter.
+        </p>
+      </div>
+      <div className="reveal">
+        {WRITING.map((w, i) => (
+          <div key={i} className="grid sm:grid-cols-[130px_1fr_auto] gap-2 sm:gap-6 items-baseline py-6 border-t border-line last:border-b">
+            <div className="font-mono text-[11px] tracking-wider uppercase text-muted">Coming soon</div>
+            <div className="font-serif text-[21px] text-ink">{w.title}</div>
+            <div className="font-mono text-[11px] tracking-wider uppercase text-brass">{w.cat}</div>
+          </div>
+        ))}
       </div>
     </section>
   );
 }
 
-function WhereIAddValue() {
+function Contact() {
   return (
-    <section id="value" className="py-24 relative">
-      <div className="absolute inset-0 pointer-events-none" style={{
-        backgroundImage: `radial-gradient(ellipse 55% 40% at 85% 50%, rgba(212,160,23,0.05) 0%, transparent 55%)`,
-      }} />
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="section-reveal text-center mb-16">
-          <div className="text-mercury-400 text-xs font-medium tracking-widest uppercase mb-3">Advisory & Leadership</div>
-          <h2 className="font-display text-4xl font-bold text-silver-100 mb-4">
-            Where I <span className="text-gradient-dual">Add Value</span>
-          </h2>
-          <p className="text-silver-400 max-w-lg mx-auto">
-            Whether you're scaling an enterprise, building a startup, or evaluating an AI investment-I bring pattern-matched clarity from 18+ years at the frontier.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          {VALUE_SEGMENTS.map((seg, i) => (
-            <div
-              key={i}
-              className="section-reveal card-dark rounded-2xl p-7 hover:border-mercury-500/25 transition-all duration-300 group"
-              style={{ transitionDelay: `${i * 100}ms` }}
-            >
-              <div className="w-12 h-12 rounded-2xl bg-mercury-500/8 border border-mercury-500/18 flex items-center justify-center mb-5 group-hover:bg-mercury-500/14 transition-colors">
-                <seg.icon size={22} className="text-mercury-400" />
-              </div>
-              <h3 className="font-display font-bold text-xl text-silver-100 mb-1">{seg.title}</h3>
-              <p className="text-mercury-400 text-xs font-medium mb-5">{seg.tagline}</p>
-              <ul className="space-y-3">
-                {seg.items.map((item, j) => (
-                  <li key={j} className="flex items-start gap-3">
-                    <div className="w-1 h-1 rounded-full bg-mercury-500 mt-2 shrink-0" />
-                    <span className="text-silver-400 text-sm leading-relaxed">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Connect() {
-  return (
-    <section id="connect" className="py-24 relative">
-      <div className="absolute inset-0 pointer-events-none" style={{
-        backgroundImage: `radial-gradient(ellipse 65% 50% at 50% 50%, rgba(212,160,23,0.06) 0%, transparent 65%)`,
-      }} />
-      <div className="max-w-3xl mx-auto px-6 text-center">
-        <div className="section-reveal">
-          <div className="text-mercury-400 text-xs font-medium tracking-widest uppercase mb-3">Let's Build</div>
-          <h2 className="font-display text-4xl lg:text-5xl font-bold text-silver-100 mb-6">
-            Ready to build something<br />
-            <span className="text-gradient-gold">that scales beyond products?</span>
-          </h2>
-          <p className="text-silver-400 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
-            Open to strategic advisory roles, leadership opportunities, mentorship, and collaborations
-            on AI-native platforms. Let's create something meaningful.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="https://topmate.io/phanindra_venkata"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-gradient-to-r from-mercury-500 to-mercury-400 text-obsidian-950 font-semibold px-8 py-4 rounded-full hover:opacity-90 transition-opacity"
-            >
-              <CalendarCheck size={18} /> Book on Topmate
-            </a>
-            <a
-              href="https://www.linkedin.com/in/phanindragvenkata/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 border border-silver-600/20 text-silver-300 hover:text-silver-100 hover:border-silver-500/30 px-8 py-4 rounded-full transition-all"
-            >
-              <Linkedin size={18} /> Connect on LinkedIn
-            </a>
-            <a
-              href="mailto:venkatagphanindra@gmail.com"
-              className="inline-flex items-center gap-3 border border-sage-600/25 text-sage-400 hover:text-sage-300 hover:border-sage-500/35 px-8 py-4 rounded-full transition-all"
-            >
-              <Mail size={18} /> Send a Message
-            </a>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-16 pt-10 border-t border-mercury-500/10">
-            {[
-              { label: 'Mentorship', desc: 'PM career guidance' },
-              { label: 'Advisory', desc: 'AI Strategy & Platform' },
-              { label: 'Leadership', desc: 'CPO / VP Product roles' },
-              { label: 'Collaboration', desc: 'AI-native platform builds' },
-            ].map((p) => (
-              <div key={p.label}>
-                <div className="text-silver-200 font-semibold text-sm mb-1">{p.label}</div>
-                <div className="text-silver-500 text-xs">{p.desc}</div>
-              </div>
-            ))}
-          </div>
+    <section id="contact" className="max-w-page mx-auto px-6 sm:px-8 py-20 sm:py-28">
+      <div className="reveal">
+        <Eyebrow>Connect</Eyebrow>
+        <h2 className="font-serif font-semibold text-[clamp(32px,5vw,56px)] leading-[1.08] tracking-tight max-w-[18ch] mb-7">
+          Building something that has to be right? Let&apos;s talk.
+        </h2>
+        <p className="text-[clamp(17px,2vw,20px)] text-muted leading-[1.6] max-w-[52ch] mb-8">
+          Open to conversations on enterprise AI, product leadership, advisory work, and the occasional stage.
+          The best ones start simply.
+        </p>
+        <div className="flex flex-wrap gap-3.5">
+          <a href="https://www.linkedin.com/in/phanindragvenkata/" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 bg-ink text-paper hover:bg-brass px-6 py-3 rounded-[2px] text-[15px] transition-colors">
+            LinkedIn <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </a>
+          <a href="mailto:venkatagphanindra@gmail.com" className="inline-flex items-center gap-2 border border-line text-ink hover:border-brass hover:text-brass px-6 py-3 rounded-[2px] text-[15px] transition-colors">
+            Email
+          </a>
+          <a href="https://virtunx.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-line text-ink hover:border-brass hover:text-brass px-6 py-3 rounded-[2px] text-[15px] transition-colors">
+            VirtuNx
+          </a>
         </div>
       </div>
     </section>
@@ -1148,55 +429,53 @@ function Connect() {
 
 function Footer() {
   return (
-    <footer className="border-t border-mercury-500/10 py-8">
-      <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <span className="font-display font-semibold text-gradient-gold">Phanindra G. Venkata</span>
-        <p className="text-silver-600 text-xs">AI-First Product Leader · Mentor · Strategist</p>
-        <div className="flex items-center gap-4">
-          <a
-            href="https://topmate.io/phanindra_venkata"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-silver-500 hover:text-mercury-400 transition-colors text-xs font-medium"
-          >
-            Topmate
-          </a>
-          <a
-            href="mailto:venkatagphanindra@gmail.com"
-            className="text-silver-500 hover:text-silver-300 transition-colors"
-          >
-            <Mail size={16} />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/phanindragvenkata/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-silver-500 hover:text-silver-300 transition-colors"
-          >
-            <Linkedin size={18} />
-          </a>
-        </div>
+    <footer className="border-t border-line">
+      <div className="max-w-page mx-auto px-6 sm:px-8 py-10 flex justify-between items-center gap-5 flex-wrap text-[13px] text-muted">
+        <span>Phanindra Venkata Gottipati &middot; CEO, VirtuNx</span>
+        <span className="font-serif italic">Clarity compounds.</span>
+        <span>
+          <a href="https://www.linkedin.com/in/phanindragvenkata/" target="_blank" rel="noopener noreferrer" className="hover:text-brass transition-colors">LinkedIn</a>
+          <span className="mx-2">&middot;</span>
+          <a href="https://virtunx.com/" target="_blank" rel="noopener noreferrer" className="hover:text-brass transition-colors">VirtuNx</a>
+        </span>
       </div>
     </footer>
   );
 }
 
 export default function App() {
-  useIntersectionObserver();
+  useReveal();
+  const [theme, setTheme] = useState<Theme>('light');
+
+  useEffect(() => {
+    const saved = localStorage.getItem('pvg-theme');
+    const initial: Theme = saved === 'dark' || saved === 'light'
+      ? saved
+      : window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    setTheme(initial);
+    if (saved === 'dark' || saved === 'light') {
+      document.documentElement.setAttribute('data-theme', saved);
+    }
+  }, []);
+
+  const toggle = () => {
+    const next: Theme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(next);
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('pvg-theme', next);
+  };
 
   return (
-    <div className="min-h-screen bg-obsidian-950 text-silver-300">
-      <Navbar />
+    <div className="min-h-screen bg-paper text-ink font-sans antialiased">
+      <Navbar theme={theme} onToggle={toggle} />
       <Hero />
-      <CurrentRole />
-      <VirtuNxProducts />
-      <WhatIDo />
-      <Impact />
+      <Strip />
+      <PointOfView />
+      <Path />
       <Philosophy />
-      <Mentorship />
-      <Testimonials />
-      <WhereIAddValue />
-      <Connect />
+      <VirtuNx />
+      <Writing />
+      <Contact />
       <Footer />
     </div>
   );
