@@ -47,7 +47,7 @@ const PATH: Stage[] = [
     role: 'Product',
     dates: '2023–2025',
     lesson: 'Leverage is the whole game.',
-    body: 'Built an AI application-development platform with 250+ agentic actions, compressed workflow creation from weeks to hours, and contributed to a $20M+ pipeline. Platforms compound: the right foundation makes every future product cheaper to build and every future decision easier to make.',
+    body: 'Built an AI application-development platform for Employee Service / HR Service, compressed workflow creation from weeks to hours, and contributed to a $20M+ pipeline. Platforms compound: the right foundation makes every future product cheaper to build and every future decision easier to make.',
   },
   {
     n: '04',
