@@ -147,7 +147,7 @@ function Navbar({ theme, onToggle }: { theme: Theme; onToggle: () => void }) {
           Phanindra Venkata Gottipati
         </a>
 
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-8">
           {NAV.map((l) => (
             <a key={l.href} href={l.href} className="link-underline text-[14px] text-muted hover:text-ink transition-colors">
               {l.label}
@@ -165,7 +165,7 @@ function Navbar({ theme, onToggle }: { theme: Theme; onToggle: () => void }) {
           </a>
         </div>
 
-        <div className="md:hidden flex items-center gap-4">
+        <div className="lg:hidden flex items-center gap-4">
           <button
             onClick={onToggle}
             aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
@@ -180,7 +180,7 @@ function Navbar({ theme, onToggle }: { theme: Theme; onToggle: () => void }) {
       </div>
 
       {open && (
-        <div className="md:hidden border-t border-line bg-paper px-6 py-4 flex flex-col gap-4">
+        <div className="lg:hidden border-t border-line bg-paper px-6 py-4 flex flex-col gap-4">
           {NAV.map((l) => (
             <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="text-[15px] text-muted hover:text-ink transition-colors">
               {l.label}
