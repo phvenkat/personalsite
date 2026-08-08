@@ -28,7 +28,7 @@ const PATH: Stage[] = [
   {
     n: '01',
     company: 'Microsoft',
-    role: 'Senior Product Manager',
+    role: 'Product',
     dates: '2013–2021',
     lesson: 'Scale is a discipline, not an accident.',
     body: 'Built petabyte-scale data platforms and cut partner onboarding from six weeks to eight hours. The lesson that stayed: at enterprise scale, the constraint is never the technology. It is the clarity of the interface between systems and the people who depend on them.',
@@ -36,7 +36,7 @@ const PATH: Stage[] = [
   {
     n: '02',
     company: 'Amazon',
-    role: 'Principal Product Manager',
+    role: 'Product',
     dates: '2021–2023',
     lesson: 'Customers do not want features. They want a decision made easier.',
     body: 'Scaled search and discovery past 350 million monthly queries and built the ecosystem strategy around them. Customer obsession stopped being a slogan and became a method: start from the choice the customer is trying to make, and work backward to the product.',
@@ -44,7 +44,7 @@ const PATH: Stage[] = [
   {
     n: '03',
     company: 'Salesforce',
-    role: 'Senior Director, Product Management',
+    role: 'Product',
     dates: '2023–2025',
     lesson: 'Leverage is the whole game.',
     body: 'Built an AI application-development platform with 250+ agentic actions, compressed workflow creation from weeks to hours, and contributed to a $20M+ pipeline. Platforms compound: the right foundation makes every future product cheaper to build and every future decision easier to make.',
