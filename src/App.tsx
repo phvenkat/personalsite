@@ -284,8 +284,9 @@ function Path() {
           One question, asked in harder rooms.
         </h2>
         <p className="text-[clamp(17px,2vw,20px)] text-muted leading-[1.6]">
-          It began in 2005, writing Java and J2EE, learning how software is actually built. Eighteen years on,
-          the question has never changed, only the room: how do you help people make better decisions at scale?
+          It began in 2005, writing Java and J2EE, learning how software is actually built. An MBA at the Indian
+          Institute of Management Calcutta reframed it from how to build to what to build. Eighteen years on, the
+          question has never changed, only the room: how do you help people make better decisions at scale?
         </p>
       </div>
 
