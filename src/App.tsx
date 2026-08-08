@@ -18,7 +18,7 @@ const PATH = [
     n: '01',
     company: 'Microsoft',
     role: 'Senior Product Manager',
-    dates: '2013 - 2021',
+    dates: '2013–2021',
     lesson: 'Scale is a discipline, not an accident.',
     body: 'Built petabyte-scale data platforms and cut partner onboarding from six weeks to eight hours. The lesson that stayed: at enterprise scale, the constraint is never the technology. It is the clarity of the interface between systems and the people who depend on them.',
   },
@@ -26,7 +26,7 @@ const PATH = [
     n: '02',
     company: 'Amazon',
     role: 'Principal Product Manager',
-    dates: '2021 - 2023',
+    dates: '2021–2023',
     lesson: 'Customers do not want features. They want a decision made easier.',
     body: 'Scaled search and discovery past 350 million monthly queries and built the ecosystem strategy around them. Customer obsession stopped being a slogan and became a method: start from the choice the customer is trying to make, and work backward to the product.',
   },
@@ -34,7 +34,7 @@ const PATH = [
     n: '03',
     company: 'Salesforce',
     role: 'Senior Director, Product Management',
-    dates: '2023 - 2025',
+    dates: '2023–2025',
     lesson: 'Leverage is the whole game.',
     body: 'Built an AI application-development platform with 250+ agentic actions, compressed workflow creation from weeks to hours, and contributed to a $20M+ pipeline. Platforms compound: the right foundation makes every future product cheaper to build and every future decision easier to make.',
   },
@@ -42,15 +42,15 @@ const PATH = [
     n: '04',
     company: 'VirtuNx',
     role: 'Chief Executive Officer',
-    dates: '2026 - Present',
+    dates: '2026–Present',
     lesson: 'Ownership changes what you are willing to build.',
-    body: 'Now putting the whole thesis to work as CEO - building enterprise AI, data, and automation products end to end for regulated, high-stakes industries, alongside sister company Seosaph. Everything learned about how great software gets made, aimed at one outcome: turning complexity into clear, confident action.',
+    body: 'Now putting the whole thesis to work as CEO. Building enterprise AI, data, and automation products end to end for regulated, high-stakes industries, alongside sister company Seosaph. Everything learned about how great software gets made, aimed at one outcome: turning complexity into clear, confident action.',
     current: true,
   },
 ];
 
 const PILLARS = [
-  { n: '01', title: 'Start from the decision', body: 'Build backward from the choice someone has to make - not forward from the technology you happen to have.' },
+  { n: '01', title: 'Start from the decision', body: 'Build backward from the choice someone has to make, not forward from the technology you happen to have.' },
   { n: '02', title: 'Simplicity is earned', body: 'Anyone can add. The work is in what you remove. Simple is the finished state, never the starting one.' },
   { n: '03', title: 'Build what compounds', body: 'Favor the system over the feature. The right platform makes every decision that follows it cheaper.' },
   { n: '04', title: 'Own the outcome', body: 'Judge the work by the decisions it improved, not the output it produced. Ownership ends at the result.' },
@@ -193,7 +193,7 @@ function Hero() {
           <p className="text-[clamp(17px,2vw,20px)] text-muted leading-[1.55] max-w-[42ch] mb-9">
             I&apos;m Phanindra Venkata Gottipati, CEO of <strong className="text-ink font-semibold">VirtuNx</strong>,
             where we build enterprise AI products that help organizations decide with confidence. Eighteen years in
-            software - from engineer to product leader at Microsoft, Amazon, and Salesforce - taught me the work is
+            software, from engineer to product leader at Microsoft, Amazon, and Salesforce, taught me the work is
             not adding capability. It is <strong className="text-ink font-semibold">removing doubt</strong>.
           </p>
           <div className="flex flex-wrap gap-4 items-center">
@@ -251,10 +251,10 @@ function PointOfView() {
           Every enterprise is drowning in tools and starving for clarity.
         </p>
         <p className="text-[18px] leading-[1.7] text-muted max-w-[58ch] mt-9">
-          More dashboards, more data, more features - and still, the person who has to decide is left guessing.
+          More dashboards, more data, more features. And still, the person who has to decide is left guessing.
           I have spent my career on the other side of that problem: not shipping more, but making the decision obvious.
           <strong className="text-ink font-semibold"> Good systems compound.</strong> Each one built well makes the next
-          decision cheaper, faster, and clearer. That is the whole discipline - and it is what VirtuNx exists to do.
+          decision cheaper, faster, and clearer. That is the whole discipline, and it is what VirtuNx exists to do.
         </p>
       </div>
     </section>
@@ -270,7 +270,7 @@ function Path() {
           One question, asked in harder rooms.
         </h2>
         <p className="text-[clamp(17px,2vw,20px)] text-muted leading-[1.6]">
-          It began in 2005, writing Java and J2EE - learning how software is actually built. Eighteen years on,
+          It began in 2005, writing Java and J2EE, learning how software is actually built. Eighteen years on,
           the question has never changed, only the room: how do you help people make better decisions at scale?
         </p>
       </div>
@@ -382,7 +382,7 @@ function Writing() {
         <Eyebrow>Writing</Eyebrow>
         <h2 className="font-serif font-semibold text-[clamp(28px,4vw,42px)] leading-[1.12] tracking-tight mb-5">Notes on building.</h2>
         <p className="text-[clamp(17px,2vw,20px)] text-muted leading-[1.6]">
-          Essays on enterprise AI, product-led organizations, and decision intelligence - written for operators, not
+          Essays on enterprise AI, product-led organizations, and decision intelligence, written for operators, not
           the hype cycle. The first pieces publish this quarter.
         </p>
       </div>
