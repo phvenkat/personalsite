@@ -6,36 +6,31 @@
 
 /* ---------------------------------------------------------------
    Palette as RGB channel triplets so Tailwind opacity modifiers
-   (bg-brass/10, border-line/60) keep working. Light is the default
-   executive ground; dark is a considered second theme, not an invert.
+   (bg-brass/10, border-line/60) keep working. Dark is the default
+   executive ground; light is an opt-in via the toggle (persisted in
+   localStorage). The OS preference is intentionally not consulted so
+   the dark identity is what every first-time visitor sees.
    --------------------------------------------------------------- */
 :root {
-  --paper: 241 239 233;    /* #f1efe9 warm architectural paper */
-  --surface: 247 245 240;  /* #f7f5f0 */
-  --text: 27 30 36;        /* #1b1e24 ink */
-  --muted: 94 95 88;       /* #5e5f58 warm-neutral grey - AA on paper (5.6:1) */
-  --line: 217 212 200;     /* #d9d4c8 hairline */
-  --brass: 138 99 32;      /* #8a6320 muted brass accent */
+  --paper: 18 19 25;       /* #121319 graphite ink */
+  --surface: 23 25 34;     /* #171922 */
+  --text: 233 230 221;     /* #e9e6dd */
+  --muted: 154 156 159;    /* #9a9c9f - AA on ink (6.7:1) */
+  --line: 42 44 52;        /* #2a2c34 hairline */
+  --brass: 198 154 78;     /* #c69a4e muted brass accent */
 }
-/* Only when the viewer has NOT made an explicit choice via the toggle. */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
-    --paper: 18 19 25;     /* #121319 graphite ink */
-    --surface: 23 25 34;   /* #171922 */
-    --text: 233 230 221;   /* #e9e6dd */
-    --muted: 154 156 159;  /* #9a9c9f */
-    --line: 42 44 52;      /* #2a2c34 */
-    --brass: 198 154 78;   /* #c69a4e */
-  }
-}
-/* Explicit toggle wins over the OS preference in both directions. */
-:root[data-theme='light'] {
-  --paper: 241 239 233; --surface: 247 245 240; --text: 27 30 36;
-  --muted: 94 95 88; --line: 217 212 200; --brass: 138 99 32;
-}
+/* Explicit toggle wins in both directions. */
 :root[data-theme='dark'] {
   --paper: 18 19 25; --surface: 23 25 34; --text: 233 230 221;
   --muted: 154 156 159; --line: 42 44 52; --brass: 198 154 78;
+}
+:root[data-theme='light'] {
+  --paper: 241 239 233;    /* #f1efe9 warm architectural paper */
+  --surface: 247 245 240;  /* #f7f5f0 */
+  --text: 27 30 36;        /* #1b1e24 ink */
+  --muted: 94 95 88;       /* #5e5f58 - AA on paper (5.6:1) */
+  --line: 217 212 200;     /* #d9d4c8 */
+  --brass: 138 99 32;      /* #8a6320 */
 }
 
 @layer base {
@@ -61,12 +56,10 @@
 }
 
 @layer utilities {
-  /* Editorial portrait: grayscale + faint warmth, not a glossy headshot. */
-  .portrait-treat { filter: grayscale(1) contrast(1.02) brightness(1.02) sepia(0.12); }
-  :root[data-theme='dark'] .portrait-treat { filter: grayscale(1) contrast(1.05) brightness(0.92) sepia(0.16); }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme='light']) .portrait-treat { filter: grayscale(1) contrast(1.05) brightness(0.92) sepia(0.16); }
-  }
+  /* Editorial portrait: grayscale + faint warmth, not a glossy headshot.
+     Dark treatment is the default; light applies only under the toggle. */
+  .portrait-treat { filter: grayscale(1) contrast(1.05) brightness(0.92) sepia(0.16); }
+  :root[data-theme='light'] .portrait-treat { filter: grayscale(1) contrast(1.02) brightness(1.02) sepia(0.12); }
 
   /* Hairline eyebrow rule */
   .eyebrow-rule::before {

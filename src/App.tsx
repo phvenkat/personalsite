@@ -540,18 +540,23 @@ function Footer() {
 
 export default function App() {
   useReveal();
-  const [theme, setTheme] = useState<Theme>('light');
+  const [theme, setTheme] = useState<Theme>('dark');
 
   useEffect(() => {
+    // Dark is the default; light only when the visitor has toggled to it.
     const saved = localStorage.getItem('pvg-theme');
-    const initial: Theme = saved === 'dark' || saved === 'light'
-      ? saved
-      : window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    const initial: Theme = saved === 'light' ? 'light' : 'dark';
     setTheme(initial);
     if (saved === 'dark' || saved === 'light') {
       document.documentElement.setAttribute('data-theme', saved);
     }
   }, []);
+
+  // Keep the mobile browser chrome colour in sync with the active theme.
+  useEffect(() => {
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', theme === 'dark' ? '#121319' : '#f1efe9');
+  }, [theme]);
 
   const toggle = () => {
     const next: Theme = theme === 'dark' ? 'light' : 'dark';
