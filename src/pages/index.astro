@@ -1,0 +1,307 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+
+const LINKEDIN = 'https://www.linkedin.com/in/phanindragvenkata/';
+const PRODUCTS = ['PortiVix', 'Morviac', 'OplanIQ', 'ORVIAC'];
+
+const JOURNEY = [
+  { n: '01', company: 'Microsoft', dates: '2013–2021', lesson: 'Learning how enterprise platforms scale.', body: 'Built data platforms and partner systems at global scale, and learned how enterprise software actually earns trust: through reliability, clean interfaces between systems and people, and ecosystems that let others build.' },
+  { n: '02', company: 'Amazon', dates: '2021–2023', lesson: 'Learning customer obsession, experimentation and discovery.', body: 'Worked on search and discovery at consumer scale. Customer obsession stopped being a slogan and became a method: study real behaviour, run the experiment, let the metric and the customer decide.' },
+  { n: '03', company: 'Salesforce', dates: '2023–2025', lesson: 'Learning how enterprise experiences, workflows and AI come together.', body: 'Led product for AI-enabled enterprise experiences across Employee Service and HR Service, where the work is making workflows, platforms and AI meet in something an employee can actually use.' },
+  { n: '04', company: 'VirtuNx & Seosaph', dates: '2026–Present', current: true, roles: [ { title: 'Chief Executive Officer', org: 'VirtuNx', dates: 'Aug 2026–Present' }, { title: 'Business Head', org: 'Seosaph', dates: 'Apr 2026–Present' } ], lesson: 'Applying those lessons to building a product company.', body: 'The next logical chapter, not a change of direction: turning two decades of building enterprise products into a company that builds focused, vertical enterprise products, and the teams and customers around them.' },
+];
+
+const PRINCIPLES = [
+  { title: 'Customer before technology', body: 'Start with the problem worth solving, not the technology available.' },
+  { title: 'Decisions before dashboards', body: 'Information creates value when it improves an action.' },
+  { title: 'Clarity before complexity', body: 'Enterprise problems can be complex. Enterprise experiences should not be.' },
+  { title: 'Ownership before hierarchy', body: 'Give people context, accountability and room to act.' },
+  { title: 'Systems before heroes', body: 'Strong organizations succeed because of good systems, not extraordinary individual effort.' },
+  { title: 'Long-term value before short-term activity', body: 'Measure outcomes, not motion.' },
+];
+
+const IMPACT = [
+  { at: 'Microsoft', title: 'Turning weeks of onboarding into hours', context: 'Enterprise partners waited weeks to integrate, held up by manual steps and disconnected systems.', contribution: 'Built petabyte-scale data platforms and streamlined the onboarding path end to end.', outcome: 'Partner onboarding dropped from six weeks to eight hours, on platforms operating at 2.4PB scale.' },
+  { at: 'Amazon', title: 'Search and discovery at consumer scale', context: 'Customers could only buy what they could find; discovery quality moved the whole business.', contribution: 'Scaled search and discovery systems and made them data-driven, reducing friction for third-party developers.', outcome: 'Served 350M+ monthly queries with measurable gains in how customers found and chose products.' },
+  { at: 'Salesforce', title: 'AI where the enterprise actually works', context: 'Building enterprise apps for Employee Service and HR Service was slow and specialist-bound.', contribution: 'Built an AI application-development platform that compressed how these workflows are created.', outcome: 'Workflow creation moved from weeks to hours, contributing to a $20M+ pipeline.' },
+];
+
+const IDEAS = [
+  { topic: 'Enterprise AI', note: 'Moving past demonstrations toward measurable business outcomes.' },
+  { topic: 'Product Leadership', note: 'Strategy, prioritization, operating models and product organizations.' },
+  { topic: 'Decision Intelligence', note: 'From data, to insight, to decision, to action.' },
+  { topic: 'Building VirtuNx', note: 'Lessons from moving out of product leadership into company building.' },
+  { topic: 'Pharma Technology', note: 'Why vertical enterprise software needs real domain intelligence.' },
+];
+
+const latestPosts = (await getCollection('blog', ({ data }) => import.meta.env.PROD ? !data.draft : true))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 3);
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Phanindra Venkata Gottipati',
+  url: 'https://phanindragvenkata.com/',
+  image: 'https://phanindragvenkata.com/og-image.png',
+  jobTitle: ['Chief Executive Officer', 'Business Head'],
+  description: 'CEO of VirtuNx and enterprise product and AI leader, building technology that turns complexity into better decisions. Experience across Microsoft, Amazon, and Salesforce.',
+  worksFor: [
+    { '@type': 'Organization', name: 'VirtuNx', url: 'https://virtunx.com/' },
+    { '@type': 'Organization', name: 'Seosaph Infotech', url: 'https://seosaph.com/' },
+  ],
+  homeLocation: { '@type': 'Place', name: 'Hyderabad, India' },
+  alumniOf: [
+    { '@type': 'CollegeOrUniversity', name: 'Indian Institute of Management Calcutta' },
+    { '@type': 'CollegeOrUniversity', name: 'BITS Pilani' },
+    { '@type': 'CollegeOrUniversity', name: 'JNTU Hyderabad' },
+  ],
+  knowsAbout: ['Enterprise AI', 'Artificial Intelligence', 'Product Leadership', 'Product Management', 'Decision Intelligence', 'Digital Transformation', 'Platform Strategy', 'Enterprise Software'],
+  sameAs: [LINKEDIN, 'https://virtunx.com/', 'https://seosaph.com/'],
+};
+---
+<Base
+  title="Phanindra Venkata Gottipati | CEO, VirtuNx | Enterprise Product & AI Leader"
+  description="CEO of VirtuNx and enterprise product leader with experience across Microsoft, Amazon and Salesforce, building products at the intersection of AI, data and business transformation."
+  type="profile"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(personJsonLd)} />
+  </Fragment>
+
+  <!-- Hero -->
+  <header id="top" class="max-w-page mx-auto px-6 sm:px-8 pt-20 sm:pt-28 pb-14 sm:pb-20">
+    <div class="grid lg:grid-cols-[1.4fr_1fr] gap-12 lg:gap-16 items-center">
+      <div>
+        <p class="font-mono text-[12px] tracking-eyebrow uppercase text-muted mb-6">Phanindra Venkata Gottipati</p>
+        <h1 class="font-serif font-semibold text-[clamp(34px,5.4vw,60px)] leading-[1.06] tracking-tight text-balance mb-6">
+          Building technology that turns complexity into <span class="text-brass">better decisions</span>.
+        </h1>
+        <p class="font-serif text-[clamp(18px,2.1vw,22px)] text-ink mb-6">
+          CEO, VirtuNx <span class="text-muted px-1.5">/</span> Enterprise Product &amp; AI Leader
+        </p>
+        <p class="text-[clamp(16px,1.9vw,19px)] text-muted leading-[1.6] max-w-[46ch] mb-9">
+          I build enterprise products, teams and businesses at the intersection of technology, data, AI and human decision-making.
+        </p>
+        <div class="flex flex-wrap gap-4 items-center">
+          <a href="#journey" class="group inline-flex items-center gap-2 bg-ink text-paper hover:bg-brass px-6 py-3 rounded-[2px] text-[15px] transition-colors">
+            Explore my journey <Icon name="arrow-right" size={16} class="group-hover:translate-x-0.5 transition-transform" />
+          </a>
+          <a href="#building" class="inline-flex items-center gap-2 border border-line text-ink hover:border-brass hover:text-brass px-6 py-3 rounded-[2px] text-[15px] transition-colors">
+            What we&apos;re building at VirtuNx <Icon name="arrow-right" size={15} />
+          </a>
+          <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="text-muted hover:text-brass transition-colors p-1">
+            <Icon name="linkedin" size={19} />
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <img src="/Phani_Photo.jpeg" alt="Phanindra Venkata Gottipati, CEO of VirtuNx" width="864" height="1184" class="portrait-treat w-full aspect-[4/5] object-cover object-top rounded-[2px] block" />
+        <div class="font-mono text-[11px] tracking-wider uppercase text-muted mt-3.5 pt-3 border-t border-line flex justify-between">
+          <span>Phanindra Venkata Gottipati</span>
+          <span>Hyderabad</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Credibility strip -->
+  <div class="border-y border-line">
+    <div class="max-w-page mx-auto px-6 sm:px-8 py-6 flex items-center gap-x-8 gap-y-3 flex-wrap font-mono text-[12px] tracking-wider uppercase text-muted">
+      <span class="text-ink">18+ years in enterprise technology</span>
+      <span aria-hidden="true" class="text-line">/</span>
+      <span>Microsoft</span><span>Amazon</span><span>Salesforce</span>
+      <span class="text-brass">now building VirtuNx</span>
+    </div>
+  </div>
+
+  <!-- What I'm building now -->
+  <section id="building" class="max-w-page mx-auto px-6 sm:px-8 py-20 sm:py-28">
+    <div class="reveal grid lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-16">
+      <div>
+        <p class="eyebrow-rule font-mono text-[12px] tracking-eyebrow uppercase text-brass mb-5 flex items-center">What I&apos;m building now</p>
+        <h2 class="font-serif font-semibold text-[clamp(30px,4.4vw,46px)] leading-[1.08] tracking-tight">VirtuNx</h2>
+      </div>
+      <div>
+        <p class="text-[clamp(17px,2vw,20px)] text-ink leading-[1.6] mb-5">
+          After years of building enterprise products inside global technology organizations, I wanted to apply those lessons closer to specific industry and business problems.
+        </p>
+        <p class="text-[clamp(17px,2vw,20px)] text-muted leading-[1.6] mb-8">
+          VirtuNx is that next chapter: focused enterprise products where AI, data, domain knowledge and thoughtful product engineering come together to improve important business decisions. My personal site explains why I am building the company; the company site is where the products speak for themselves.
+        </p>
+        <a href="https://virtunx.com/" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-2 text-[15px] text-ink border border-line hover:border-brass hover:text-brass px-6 py-3 rounded-[2px] transition-colors">
+          Explore VirtuNx <Icon name="arrow-up-right" size={16} class="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+        </a>
+        <div class="mt-8 pt-6 border-t border-line flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[12px] tracking-wider uppercase text-muted">
+          <span class="text-muted/80">The products</span>
+          {PRODUCTS.map((p) => <span class="text-ink">{p}</span>)}
+        </div>
+        <p class="mt-4 font-mono text-[11px] tracking-wider uppercase text-muted">VirtuNx and Seosaph are part of the same family of companies.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Journey -->
+  <section id="journey" class="max-w-page mx-auto px-6 sm:px-8 py-20 sm:py-28">
+    <div class="reveal max-w-[64ch] mb-14">
+      <p class="eyebrow-rule font-mono text-[12px] tracking-eyebrow uppercase text-brass mb-5 flex items-center">My journey</p>
+      <h2 class="font-serif font-semibold text-[clamp(28px,4vw,44px)] leading-[1.1] tracking-tight mb-5">From platforms, to products, to building a company.</h2>
+      <p class="text-[clamp(17px,2vw,20px)] text-muted leading-[1.6]">
+        It began in 2005, writing Java and J2EE, and later an MBA at the Indian Institute of Management Calcutta reframed the work from how to build to what to build. Each chapter since has answered the same question in a harder room: how do you help people make better decisions at scale?
+      </p>
+    </div>
+    <div>
+      {JOURNEY.map((s) => (
+        <div class="reveal grid sm:grid-cols-[88px_1fr] gap-4 sm:gap-8 py-9 border-t border-line last:border-b">
+          <div class="sm:pt-1.5">
+            <div class="font-mono text-[13px] text-brass tracking-wider">{s.n}</div>
+            <div class="font-mono text-[11px] text-muted tracking-wider mt-2 hidden sm:block tabular-nums">{s.dates}</div>
+          </div>
+          <div>
+            <h3 class={`font-serif text-[24px] font-semibold mb-1 ${s.current ? 'text-brass' : 'text-ink'}`}>{s.company}</h3>
+            {s.roles ? (
+              <div class="mb-3 space-y-1">
+                {s.roles.map((r) => (
+                  <div class="font-mono text-[12px] tracking-wider uppercase text-muted">{r.title}, {r.org} <span class="text-muted">&middot; {r.dates}</span></div>
+                ))}
+              </div>
+            ) : (
+              <div class="font-mono text-[12px] tracking-wider uppercase text-muted mb-3 sm:hidden">{s.dates}</div>
+            )}
+            <p class="font-serif italic text-[clamp(18px,2.2vw,22px)] text-ink leading-[1.35] mb-3">{s.lesson}</p>
+            <p class="text-muted leading-[1.65] max-w-[62ch]">{s.body}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- How I think -->
+  <section id="think" class="bg-surface border-y border-line">
+    <div class="max-w-page mx-auto px-6 sm:px-8 py-20 sm:py-28">
+      <div class="reveal max-w-[64ch] mb-14">
+        <p class="eyebrow-rule font-mono text-[12px] tracking-eyebrow uppercase text-brass mb-5 flex items-center">How I think</p>
+        <h2 class="font-serif font-semibold text-[clamp(28px,4vw,44px)] leading-[1.1] tracking-tight mb-5">Business outcomes first. Technology second.</h2>
+        <p class="text-[clamp(17px,2vw,20px)] text-muted leading-[1.6]">
+          Enterprises are rich in tools and short on clarity. AI matters when it improves a decision, not when it simply automates activity. A few principles guide how I build.
+        </p>
+      </div>
+      <div class="reveal grid sm:grid-cols-2 gap-x-14 gap-y-0">
+        {PRINCIPLES.map((p, i) => (
+          <div class="flex gap-5 py-7 border-t border-line">
+            <span class="font-mono text-[13px] text-brass tabular-nums pt-1.5">{String(i + 1).padStart(2, '0')}</span>
+            <div>
+              <h3 class="font-serif text-[clamp(20px,2.3vw,24px)] font-semibold text-ink mb-1.5">{p.title}</h3>
+              <p class="text-muted text-[15.5px] leading-[1.6]">{p.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Selected impact -->
+  <section id="impact" class="max-w-page mx-auto px-6 sm:px-8 py-20 sm:py-28">
+    <div class="reveal max-w-[64ch] mb-14">
+      <p class="eyebrow-rule font-mono text-[12px] tracking-eyebrow uppercase text-brass mb-5 flex items-center">Selected impact</p>
+      <h2 class="font-serif font-semibold text-[clamp(28px,4vw,44px)] leading-[1.1] tracking-tight mb-5">A few things worth pointing to.</h2>
+      <p class="text-[clamp(17px,2vw,20px)] text-muted leading-[1.6]">
+        Not everything I have worked on, only work that shows the shape of it: enterprise scale, customer impact, and AI put to a real business use.
+      </p>
+    </div>
+    <div class="reveal grid md:grid-cols-3 gap-px bg-line border border-line">
+      {IMPACT.map((s) => (
+        <div class="bg-paper p-7 sm:p-8 flex flex-col">
+          <div class="font-mono text-[11px] tracking-wider uppercase text-brass mb-3">{s.at}</div>
+          <h3 class="font-serif text-[21px] font-semibold text-ink leading-snug mb-4">{s.title}</h3>
+          <dl class="space-y-3 text-[14.5px] leading-[1.55]">
+            <div><dt class="font-mono text-[10.5px] tracking-wider uppercase text-muted mb-0.5">Context</dt><dd class="text-muted">{s.context}</dd></div>
+            <div><dt class="font-mono text-[10.5px] tracking-wider uppercase text-muted mb-0.5">Contribution</dt><dd class="text-muted">{s.contribution}</dd></div>
+            <div><dt class="font-mono text-[10.5px] tracking-wider uppercase text-muted mb-0.5">Outcome</dt><dd class="text-ink">{s.outcome}</dd></div>
+          </dl>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Ideas / writing -->
+  <section id="ideas" class="max-w-page mx-auto px-6 sm:px-8 py-20 sm:py-28">
+    <div class="reveal max-w-[64ch] mb-12">
+      <p class="eyebrow-rule font-mono text-[12px] tracking-eyebrow uppercase text-brass mb-5 flex items-center">Ideas</p>
+      <h2 class="font-serif font-semibold text-[clamp(28px,4vw,44px)] leading-[1.1] tracking-tight mb-5">What I am thinking and writing about.</h2>
+      <p class="text-[clamp(17px,2vw,20px)] text-muted leading-[1.6]">Written for operators, not the hype cycle. These are the territories my attention sits in.</p>
+    </div>
+
+    <div class="reveal grid sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-0 mb-14">
+      {IDEAS.map((t) => (
+        <div class="py-6 border-t border-line">
+          <h3 class="font-serif text-[20px] font-semibold text-ink mb-1.5">{t.topic}</h3>
+          <p class="text-muted text-[14.5px] leading-[1.55]">{t.note}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="reveal">
+      <div class="flex items-baseline justify-between gap-4 mb-2">
+        <div class="font-mono text-[11px] tracking-wider uppercase text-muted">Latest writing</div>
+        <a href="/writing" class="text-[13px] text-brass hover:text-ink transition-colors inline-flex items-center gap-1.5">All writing <Icon name="arrow-right" size={13} /></a>
+      </div>
+      {latestPosts.length === 0 ? (
+        <p class="text-muted py-6 border-t border-line">The first essays are on the way.</p>
+      ) : (
+        <div>
+          {latestPosts.map((post) => (
+            <a href={`/writing/${post.id}`} class="group grid sm:grid-cols-[130px_1fr_auto] gap-2 sm:gap-6 items-baseline py-5 border-t border-line last:border-b">
+              <div class="font-mono text-[11px] tracking-wider uppercase text-muted tabular-nums">{fmt(post.data.pubDate)}</div>
+              <div class="font-serif text-[clamp(18px,2.1vw,21px)] text-ink group-hover:text-brass transition-colors leading-snug">{post.data.title}</div>
+              <div class="font-mono text-[11px] tracking-wider uppercase text-brass">{post.data.category}</div>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- The next chapter -->
+  <section class="max-w-page mx-auto px-6 sm:px-8 py-16 sm:py-20">
+    <div class="reveal max-w-[62ch]">
+      <p class="eyebrow-rule font-mono text-[12px] tracking-eyebrow uppercase text-brass mb-5 flex items-center">The next chapter</p>
+      <p class="font-serif text-[clamp(21px,3vw,30px)] leading-[1.4] tracking-tight text-ink">
+        I keep returning to one question: how can enterprise technology help people make difficult decisions with greater clarity? That is shaping what we build at VirtuNx, the problems I choose to spend time on, and much of what I intend to write about in the years ahead.
+      </p>
+    </div>
+  </section>
+
+  <!-- Learning & giving back -->
+  <section class="max-w-page mx-auto px-6 sm:px-8 pb-20 sm:pb-24">
+    <div class="reveal max-w-[62ch] border-t border-line pt-10">
+      <p class="eyebrow-rule font-mono text-[12px] tracking-eyebrow uppercase text-brass mb-5 flex items-center">Learning &amp; giving back</p>
+      <p class="text-[clamp(16px,1.9vw,18px)] text-muted leading-[1.65]">
+        Some of the most valuable lessons in my career came from people who invested time in helping me think differently. I try to carry that forward through mentoring, teaching, and conversations with product professionals, students and emerging leaders.
+      </p>
+      <a href="https://topmate.io/phanindra_venkata" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 mt-5 text-[14px] text-muted hover:text-brass transition-colors">
+        Mentoring <Icon name="arrow-up-right" size={14} />
+      </a>
+    </div>
+  </section>
+
+  <!-- Connect -->
+  <section id="connect" class="max-w-page mx-auto px-6 sm:px-8 py-20 sm:py-28">
+    <div class="reveal">
+      <p class="eyebrow-rule font-mono text-[12px] tracking-eyebrow uppercase text-brass mb-5 flex items-center">Connect</p>
+      <h2 class="font-serif font-semibold text-[clamp(30px,5vw,52px)] leading-[1.08] tracking-tight max-w-[18ch] mb-7">Building something that has to be right? Let&apos;s talk.</h2>
+      <p class="text-[clamp(16px,1.9vw,19px)] text-muted leading-[1.6] max-w-[52ch] mb-8">Open to conversations on enterprise AI, product leadership, and the businesses being built on top of them.</p>
+      <div class="flex flex-wrap gap-3.5">
+        <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-2 bg-ink text-paper hover:bg-brass px-6 py-3 rounded-[2px] text-[15px] transition-colors">
+          LinkedIn <Icon name="arrow-up-right" size={16} class="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+        </a>
+        <a href="mailto:venkatagphanindra@gmail.com" class="inline-flex items-center gap-2 border border-line text-ink hover:border-brass hover:text-brass px-6 py-3 rounded-[2px] text-[15px] transition-colors">Email</a>
+        <a href="https://virtunx.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-line text-ink hover:border-brass hover:text-brass px-6 py-3 rounded-[2px] text-[15px] transition-colors">VirtuNx</a>
+      </div>
+    </div>
+  </section>
+</Base>

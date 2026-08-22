@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+const posts = (await getCollection('blog', ({ data }) => import.meta.env.PROD ? !data.draft : true))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+<Base
+  title="Writing - Phanindra Venkata Gottipati"
+  description="Essays on enterprise AI, product leadership, and decision intelligence by Phanindra Venkata Gottipati, CEO of VirtuNx. Written for operators, not the hype cycle."
+>
+  <section class="max-w-page mx-auto px-6 sm:px-8 py-16 sm:py-24">
+    <div class="max-w-[64ch] mb-14">
+      <p class="eyebrow-rule font-mono text-[12px] tracking-eyebrow uppercase text-brass mb-5 flex items-center">Writing</p>
+      <h1 class="font-serif font-semibold text-[clamp(32px,5vw,52px)] leading-[1.08] tracking-tight mb-5">Notes on building.</h1>
+      <p class="text-[clamp(17px,2vw,20px)] text-muted leading-[1.6]">
+        Essays on enterprise AI, product leadership, and decision intelligence - written for operators, not the hype cycle.
+      </p>
+    </div>
+
+    {posts.length === 0 ? (
+      <p class="text-muted">The first essays are on the way.</p>
+    ) : (
+      <div>
+        {posts.map((post) => (
+          <a href={`/writing/${post.id}`} class="group grid sm:grid-cols-[150px_1fr] gap-2 sm:gap-8 items-baseline py-7 border-t border-line last:border-b">
+            <div class="font-mono text-[12px] tracking-wider uppercase text-muted tabular-nums">
+              <time datetime={post.data.pubDate.toISOString()}>{fmt(post.data.pubDate)}</time>
+            </div>
+            <div>
+              <div class="font-mono text-[11px] tracking-wider uppercase text-brass mb-1.5">{post.data.category}</div>
+              <h2 class="font-serif text-[clamp(20px,2.6vw,26px)] font-semibold text-ink leading-snug group-hover:text-brass transition-colors">{post.data.title}</h2>
+              <p class="text-muted text-[15px] leading-[1.6] mt-2 max-w-[62ch]">{post.data.description}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
+  </section>
+</Base>

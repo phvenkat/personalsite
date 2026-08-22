@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://phanindragvenkata.com/sitemap.xml
+Sitemap: https://phanindragvenkata.com/sitemap-index.xml
