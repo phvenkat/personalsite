@@ -12,10 +12,11 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
-const { title, description, pubDate, updatedDate, category } = post.data;
+const { title, description, pubDate, updatedDate, category, ogImage } = post.data;
 
 const site = Astro.site ?? new URL('https://phanindragvenkata.com');
 const url = new URL(`/writing/${post.id}/`, site).href;
+const ogImageUrl = new URL(ogImage ?? '/og-image.png', site).href;
 const fmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
 const jsonLd = {
@@ -29,13 +30,15 @@ const jsonLd = {
   publisher: { '@type': 'Person', name: 'Phanindra Venkata Gottipati' },
   mainEntityOfPage: url,
   url,
-  image: 'https://phanindragvenkata.com/og-image.png',
+  image: ogImageUrl,
   articleSection: category,
 };
 ---
 <Base
   title={`${title} - Phanindra Venkata Gottipati`}
   description={description}
+  image={ogImage}
+  imageAlt={title}
   type="article"
   publishedDate={pubDate}
   modifiedDate={updatedDate}

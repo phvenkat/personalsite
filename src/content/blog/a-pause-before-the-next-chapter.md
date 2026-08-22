@@ -4,6 +4,7 @@ description: "In the middle of taking on the leadership of VirtuNx, a family tri
 pubDate: 2026-08-22
 category: "Building VirtuNx"
 draft: false
+ogImage: "/og-jog-falls.jpg"
 ---
 
 In the middle of a significant professional transition, taking on the responsibility of leading VirtuNx, I had to travel to our Bengaluru office.
