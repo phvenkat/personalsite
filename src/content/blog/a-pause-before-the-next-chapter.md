@@ -22,6 +22,8 @@ His request made this trip feel less like a holiday plan and more like a pause I
 
 ## A flight seen through a child’s eyes
 
+![Phanindra and his son at the boarding gate, arms outstretched, before the flight from Hyderabad to Bengaluru.](./images/jog-falls/airport-flight.jpg)
+
 Our journey began with a flight from Hyderabad to Bengaluru.
 
 Although my son had flown earlier, this was perhaps his first flight after becoming old enough to understand what was happening around him. His excitement began well before we boarded.
@@ -65,6 +67,8 @@ Friday morning was filled with meetings and task closures before we could offici
 We then boarded a train for the six-and-a-half-hour journey towards Jog Falls, where my friend and his family were waiting for us.
 
 The train brought a slower rhythm. We could watch places pass by instead of rushing between them. After the train journey came a 45-minute drive through the forest to reach our place of stay.
+
+![Phanindra with his wife and son on the balcony of the forest stay, with misty green hills behind.](./images/jog-falls/forest-stay.jpg)
 
 That night offered something increasingly rare: almost no mobile network.
 
@@ -111,6 +115,8 @@ The sun appeared occasionally, almost like a blinking firefly, before disappeari
 The local sellers were better prepared than we were. Rain covers of every possible size were available immediately and at affordable prices. They understood the weather, the customer, and the moment of need.
 
 Covered from head to toe, we finally walked to the viewpoint and experienced Jog Falls in the pouring rain.
+
+![The family in rain ponchos at the Jog Falls viewpoint, the waterfalls in full flow through the rain.](./images/jog-falls/jog-falls-rain.jpg)
 
 It was not the clean, postcard view we had imagined.
 
