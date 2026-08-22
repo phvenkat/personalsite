@@ -1,0 +1,73 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) =>
+    import.meta.env.PROD ? !data.draft : true
+  );
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const { title, description, pubDate, updatedDate, category } = post.data;
+
+const site = Astro.site ?? new URL('https://phanindragvenkata.com');
+const url = new URL(`/writing/${post.id}/`, site).href;
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description,
+  datePublished: pubDate.toISOString(),
+  dateModified: (updatedDate ?? pubDate).toISOString(),
+  author: { '@type': 'Person', name: 'Phanindra Venkata Gottipati', url: 'https://phanindragvenkata.com/' },
+  publisher: { '@type': 'Person', name: 'Phanindra Venkata Gottipati' },
+  mainEntityOfPage: url,
+  url,
+  image: 'https://phanindragvenkata.com/og-image.png',
+  articleSection: category,
+};
+---
+<Base
+  title={`${title} - Phanindra Venkata Gottipati`}
+  description={description}
+  type="article"
+  publishedDate={pubDate}
+  modifiedDate={updatedDate}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <article class="max-w-page mx-auto px-6 sm:px-8 py-16 sm:py-24">
+    <div class="max-w-[68ch] mx-auto">
+      <a href="/writing" class="inline-flex items-center gap-1.5 text-[13px] text-muted hover:text-brass transition-colors mb-8">
+        <span class="rotate-180 inline-flex"><Icon name="arrow-right" size={13} /></span> All writing
+      </a>
+
+      <div class="font-mono text-[11px] tracking-wider uppercase text-brass mb-4">{category}</div>
+      <h1 class="font-serif font-semibold text-[clamp(30px,5vw,48px)] leading-[1.1] tracking-tight text-balance mb-5">{title}</h1>
+      <div class="font-mono text-[12px] tracking-wider uppercase text-muted mb-2">
+        <time datetime={pubDate.toISOString()}>{fmt(pubDate)}</time>
+        {updatedDate && <span> &middot; Updated {fmt(updatedDate)}</span>}
+      </div>
+      <p class="text-[clamp(17px,2vw,20px)] text-muted leading-[1.55] border-t border-line mt-6 pt-6 mb-10">{description}</p>
+
+      <div class="prose text-[17px]">
+        <Content />
+      </div>
+
+      <div class="border-t border-line mt-14 pt-8 flex items-center justify-between gap-4 flex-wrap">
+        <a href="/writing" class="inline-flex items-center gap-2 text-[14px] text-ink border border-line hover:border-brass hover:text-brass px-5 py-2.5 rounded-[2px] transition-colors">
+          <span class="rotate-180 inline-flex"><Icon name="arrow-right" size={14} /></span> More writing
+        </a>
+        <a href="/#connect" class="text-[14px] text-muted hover:text-brass transition-colors">Get in touch &rarr;</a>
+      </div>
+    </div>
+  </article>
+</Base>

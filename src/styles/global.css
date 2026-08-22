@@ -79,3 +79,23 @@
   background: rgb(var(--brass)); transition: width 0.28s ease;
 }
 .link-underline:hover::after { width: 100%; }
+
+/* Long-form article typography (blog posts) */
+.prose { color: rgb(var(--text)); }
+.prose > * + * { margin-top: 1.25em; }
+.prose h2 { font-family: var(--font-serif, 'Newsreader', Georgia, serif); font-size: clamp(24px, 3vw, 30px); font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; margin-top: 2em; margin-bottom: 0.2em; }
+.prose h3 { font-family: var(--font-serif, 'Newsreader', Georgia, serif); font-size: clamp(20px, 2.4vw, 24px); font-weight: 600; line-height: 1.25; margin-top: 1.6em; margin-bottom: 0.1em; }
+.prose p { line-height: 1.75; color: rgb(var(--text) / 0.92); }
+.prose a { color: rgb(var(--brass)); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.prose a:hover { text-decoration-thickness: 2px; }
+.prose strong { color: rgb(var(--text)); font-weight: 600; }
+.prose ul, .prose ol { padding-left: 1.3em; line-height: 1.7; color: rgb(var(--text) / 0.92); }
+.prose ul { list-style: disc; }
+.prose ol { list-style: decimal; }
+.prose li + li { margin-top: 0.4em; }
+.prose blockquote { border-left: 2px solid rgb(var(--brass)); padding-left: 1.2em; font-family: 'Newsreader', Georgia, serif; font-style: italic; font-size: 1.15em; color: rgb(var(--text)); }
+.prose code { font-family: ui-monospace, 'SFMono-Regular', 'Cascadia Mono', monospace; font-size: 0.9em; background: rgb(var(--surface)); border: 1px solid rgb(var(--line)); border-radius: 3px; padding: 0.1em 0.35em; }
+.prose pre { background: rgb(var(--surface)); border: 1px solid rgb(var(--line)); border-radius: 4px; padding: 1.1em 1.3em; overflow-x: auto; font-size: 0.9em; line-height: 1.6; }
+.prose pre code { background: none; border: none; padding: 0; }
+.prose hr { border: none; border-top: 1px solid rgb(var(--line)); margin: 2.4em 0; }
+.prose img { max-width: 100%; height: auto; border-radius: 3px; }
